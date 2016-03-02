@@ -1,6 +1,6 @@
 <?php
 
-namespace Application;
+namespace Core;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
