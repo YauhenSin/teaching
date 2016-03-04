@@ -1,0 +1,22 @@
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('My Designs');?>
+        </h2>
+        <p class="text-lighten">
+            <?php echo $this->translate('Are you a great designer? Start selling your designs now via JustShirt platform! See more about Terms and Conditions ');?>
+            <a href="<?php echo $this->url('application_static_index/view', ['id' => \Core\Entity\StaticBlock::TYPE_TERMS_CONDITIONS]); ?>" target="_blank"><?php echo $this->translate('here'); ?></a>.
+        </p>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <a href="<?php echo $this->url('user_account_designs', ['action' => 'new']); ?>" class="btn__accept">
+                    <?php echo $this->translate('Sell my design');?>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

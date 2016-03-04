@@ -1,0 +1,148 @@
+<div class="product__preview wishlist__block clearfix add-to-cart__block" data-continue>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="product__preview__picture">
+                <img src="<?php echo $this->imageUrl($product->getImages()->first(), 'preview'); ?>" alt="" class="product__preview__avatar product__picture__image">
+            </div>
+            <span class="product__preview__content">
+                <h5 class="product__preview__title"><?php echo $product->getName(); ?></h5>
+                <ul class="product__preview__color_list">
+                    <?php foreach ($product->getService()->getColors() as $color): ?>
+                        <li class="product__preview__color_list__item">
+                            <div class="color__block" style="background-color:#<?php echo $color->getHex(); ?>"></div>
+                        </li>
+                    <?php endforeach;?>
+                </ul>
+                <p class="product__availability"><?php echo $this->translate('Added'); ?>: <?php echo $product->getCreatedAt()->format('m/d/Y'); ?></p>
+                <span class="product__preview__price">
+                    <span class="product__preview__price__active">
+                        <?php echo $this->currencySwitcher()->currencyFormat($product->getPrice()); ?>
+                        <span class="product__preview__price__old">$ 25.00</span>
+                        <?php if ($product->getIsSale()) : ?>
+                            <span class="product__preview__label label__sale"><?php echo $this->translate('Sale'); ?></span>
+                        <?php endif; ?>
+                        <?php if ($product->getIsNew()) : ?>
+                            <span class="product__preview__label label__new"><?php echo $this->translate('New'); ?></span>
+                        <?php endif; ?>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <div class="col-md-8 catalog">
+            <?php echo $this->form()->openTag($form); ?>
+                <div class="loading__block col-xs-12 is-hidden">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                </div>
+                <input type="hidden" name="product" value="<?php echo $product->getId(); ?>">
+                <div class="clearfix">
+                    <i class="icon-close"></i>
+                    <p class="product__price pull-left"><?php echo $this->currencySwitcher()->currencyFormat($product->getPrice()); ?></p>
+                    <div class="pull-sm-right text-right">
+                        <p class="product__availability"><?php echo $this->translate('Availability'); ?>:
+                            <?php echo $this->translate($product->getIsInStock() ? 'In Stock' : 'Out Of Stock'); ?></p>
+                        <p class="product__required">* <?php echo $this->translate('Required Fields'); ?></p>
+                    </div>
+                </div>
+                <p class="product__subtitle">
+                    <span class="product__required">*</span> <strong><?php echo $this->translate('Color'); ?>:</strong> <span class="color-value"><?php echo $this->translate('Pink'); ?></span>
+                </p>
+                <div class="clearfix xeira-color-picker">
+                    <?php foreach ($product->getService()->getColors() as $color): ?>
+                        <div class="color__block" data-id="<?php echo $color->getId(); ?>">
+                            <div class="color__block__item">
+                                <div class="color__mark" style="background-color:#<?php echo $color->getHex(); ?>" data-color="<?php echo $this->translate($color->getLabel()); ?>"></div>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                    <?php echo $this->formHidden($form->get('color')); ?>
+                </div>
+                <div class="form-group has-error error-messages-color"></div>
+                <p class="product__subtitle clearfix">
+                    <span class="product__required">*</span> <strong><?php echo $this->translate('Size'); ?>:</strong> <span class="size-value"></span>
+                </p>
+                <div class="clearfix xeira-size-picker">
+                    <?php foreach ($product->getService()->getSizes() as $size): ?>
+                        <div class="size__block" data-id="<?php echo $size->getId(); ?>">
+                            <div class="size__block__item" data-size="<?php echo $size->getName(); ?>"><?php echo $size->getName(); ?></div>
+                        </div>
+                    <?php endforeach;?>
+                    <?php echo $this->formHidden($form->get('size')); ?>
+                </div>
+                <div class="form-group has-error error-messages-size"></div>
+                <script type="text/javascript">
+                    var optionsConfig = <?php echo $product->getService()->getJsonConfig(); ?>
+                </script>
+                <!--<p class="product__subtitle">
+                    <span class="product__required"></span> <strong><?php /*echo $this->translate('Shipping'); */?>:</strong> <?php /*echo $this->translate('Free shipping'); */?>
+                </p>-->
+                <?php if ($product->getIsInStock()) : ?>
+                <div class="clearfix m-t20">
+                    <div class="quantity clearfix">
+                        <p class="quantity__text"><?php echo $this->translate('QTY'); ?>:</p>
+                        <div class="quantity__block input-group">
+                            <button class="quantity__decrement input-group-btn" disabled="disabled">-</button>
+                            <?php echo $this->formElement($form->get('quantity')->setAttributes([
+                                'class' => 'quantity__control form-control',
+                                'value' => 1,
+                            ])); ?>
+                            <button class="quantity__increment input-group-btn">+</button>
+                        </div>
+                        <div class="form-group has-error error-messages-quantity"></div>
+                    </div>
+                    <a href="javascript:void(0);" class="product__add_to_cart">
+                        <?php echo $this->translate('Continue'); ?> <i class="icon-left"></i>
+                    </a>
+                </div>
+                <?php endif; ?>
+                <div class="form-group has-error error-messages-availability"></div>
+            <?php echo $this->form()->closeTag(); ?>
+        </div>
+    </div>
+</div>
+<div class="product__preview wishlist__block clearfix" data-add data-item_id="<?php echo $product->getId(); ?>">
+    <div class="row catalog">
+        <div class="col-md-4">
+            <div class="product__preview__picture">
+                <img src="<?php echo $this->imageUrl($product->getImages()->first(), 'preview'); ?>" alt="" class="product__preview__avatar product__picture__image">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h5 class="product__preview__title"><?php echo $product->getName(); ?></h5>
+            <ul class="product__preview__color_list">
+                <?php foreach ($product->getService()->getColors() as $color): ?>
+                    <li class="product__preview__color_list__item">
+                        <div class="color__block" style="background-color:#<?php echo $color->getHex(); ?>"></div>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+            <p class="wishlist__block__text">
+                <?php echo $this->translate('Added'); ?>: <?php echo $product->getCreatedAt()->format('m/d/Y'); ?>
+            </p>
+            <div class="product__preview__price">
+                <p class="product__preview__price__active">
+                    <?php echo $this->currencySwitcher()->currencyFormat($product->getPrice()); ?>
+                    <span class="product__preview__price__old">$ 25.00</span>
+                </p>
+                <div class="product__preview__content">
+                    <?php if ($product->getIsSale()) : ?>
+                        <span class="product__preview__label label__sale"><?php echo $this->translate('Sale'); ?></span>
+                    <?php endif; ?>
+                    <?php if ($product->getIsNew()) : ?>
+                        <span class="product__preview__label label__new"><?php echo $this->translate('New'); ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <a href="javascript:void(0);" class="remove__checkout pull-md-right">x</a>
+            <?php if ($this->cart()->isProductInCart($product)) : ?>
+                <button class="btn__primary btn__continue m-0"><?php echo $this->translate('In your Cart'); ?></button>
+            <?php else : ?>
+                <button class="btn__accept btn__continue m-0"><?php echo $this->translate('Add to Cart'); ?></button>
+            <?php endif; ?>
+        </div>
+        <div class="loading__block col-xs-12 is-hidden">
+            <i class="fa fa-spinner fa-pulse"></i>
+        </div>
+    </div>
+</div>

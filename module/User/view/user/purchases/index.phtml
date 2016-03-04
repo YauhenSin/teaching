@@ -1,0 +1,77 @@
+<?php
+$this->inlineScript()
+    ->appendFile($this->basePath('module/user/purchases/js/index.js'))
+;
+?>
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('My Purchases'); ?>
+        </h2>
+        <?php if ($this->paginator->getCurrentItemCount()) : ?>
+            <div class="row">
+                <div class="col-md-3 col-sm-5 p-t10">
+                    <div class="form-group form-search">
+                        <input type="text" name="orderId" class="form-control" placeholder="<?php echo $this->translate('Search entire store here'); ?>...">
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2 sm-right p-0 p-t10">
+                    <p class="text-page p-t5 m-b0"><?php echo $this->translate('Status'); ?>:</p>
+                </div>
+                <div class="col-md-3 col-sm-5 p-t10">
+                    <div class="form-group">
+                        <select name="status" class="form-control" disabled="disabled">
+                            <option value=""><?php echo $this->translate('All statuses'); ?></option>
+                            <option value="completed"><?php echo $this->translate('Completed'); ?></option>
+                            <option value="pending"><?php echo $this->translate('Pending'); ?></option>
+                            <option value="cancelled"><?php echo $this->translate('Cancelled'); ?></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-1 md-right p-t10">
+                    <p class="text-page p-t5 m-b0"><?php echo $this->translate('Date'); ?>:</p>
+                </div>
+                <div class="col-md-2 col-sm-6 p-t10">
+                    <div class="form-group form-date">
+                        <input type="text" name="startDate" class="form-control" data-datepicker>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 p-t10">
+                    <div class="form-group form-date form-last-date">
+                        <input type="text" name="endDate" class="form-control" data-datepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog">
+                <table class="order__table responsive__table m-t5 m-b40">
+                    <thead>
+                    <tr>
+                        <th><?php echo $this->translate('Order'); ?> #</th>
+                        <th><?php echo $this->translate('Order date'); ?></th>
+                        <th><?php echo $this->translate('Status'); ?></th>
+                        <th><?php echo $this->translate('Action'); ?></th>
+                    </tr>
+                    </thead>
+                    <tbody class="search-results">
+                    <?php echo $this->partial('user/purchases/partials/list', ['paginator' => $this->paginator]); ?>
+                    </tbody>
+                </table>
+                <div class="loading__block col-xs-12 is-hidden">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                </div>
+            </div>
+            <ul class="pagination">
+                <?php echo $this->paginationControl($this->paginator, 'Sliding', 'core/partials/paginator/paginator'); ?>
+            </ul>
+        <?php else : ?>
+            <p class="title_text">
+                <?php echo $this->translate('You didn\'t make any purchase yet. Please go to'); ?> <a href="<?php echo $this->url('application_catalog_index'); ?>" class="link__page-14"><?php echo $this->translate('catalog'); ?></a>
+            </p>
+        <?php endif; ?>
+
+    </div>
+</div>

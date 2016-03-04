@@ -1,0 +1,55 @@
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('My Reviews'); ?>
+            <a href="<?php echo $this->url('user_account_reviews', ['action' => 'generate']); ?>"><?php echo $this->translate('Generate Review'); ?></a>
+        </h2>
+        <?php foreach ($this->reviews as $review) : ?>
+            <div class="row review">
+                <div class="col-md-3">
+                    <div class="review__picture">
+                        <img src="<?php echo $this->basePath('module/core/img/review/review1.png'); ?>" alt="" class="review__picture__block">
+                    </div>
+                </div>
+                <?php echo $this->form()->openTag($review['form']); ?>
+                    <div class="col-md-9">
+                        <p class="review__title">
+                            <?php echo $this->translate('Campaign name'); ?>
+                        </p>
+                        <p class="review__text">
+                            <?php echo $this->translate('Lorem ipsum dolor sit amet, consectetur adipisicing elit'); ?>.
+                        </p>
+                        <p class="review__mark">
+                            <?php echo $this->translate('Irons & Ovens'); ?>
+                        </p>
+                        <p class="review__label">
+                            <?php echo $this->translate('Your review'); ?>
+                        </p>
+                        <div class="form-group <?php echo $review['form']->get('content')->getMessages() ? 'has-error' : '';?>">
+                            <?php $element = $review['form']
+                                ->get('content')
+                                ->setAttributes([
+                                    'class' => 'form-control',
+                                    'rows' => '5',
+                                    ]); ?>
+                            <?php echo $this->formTextarea($element) ?>
+                            <?php echo $this->formElementErrors()->render($element); ?>
+                        </div>
+                        <div class="pull-right">
+                            <?php echo $this->formSubmit($review['form']
+                                ->get('submit')
+                                ->setAttributes([
+                                    'class' => 'btn__default',
+                                    'value' => $this->translate('Add Review'),
+                                ]));?>
+                        </div>
+                    </div>
+                <?php echo $this->form()->closeTag() ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

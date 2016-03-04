@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use ZfcUser\Entity\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Form\Annotation as AT;
-use Core\Service\User as UserService;
 
 /**
  * @ORM\Entity(repositoryClass="Core\Repository\UserRepository")
@@ -61,21 +60,6 @@ class User implements UserInterface, ProviderInterface
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
      */
     protected $password;
-
-    /**
-     * @AT\Type("Zend\Form\Element\Password")
-     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
-     * @AT\Validator({"name":"Identical", "options":{"token" : "password"}})
-     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
-     *
-     */
-    protected $passwordConfirm;
-
-    /**
-     * @AT\Type("Zend\Form\Element\Checkbox")
-     * @AT\Validator({"name":"NotEmpty", "options":{"type":{"integer", "zero"}}})
-     */
-    protected $terms;
 
     /**
      * @var int
@@ -136,45 +120,6 @@ class User implements UserInterface, ProviderInterface
     protected $phone;
 
     /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="UserAddress", mappedBy="user")
-     */
-    protected $addresses;
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
-     */
-    protected $products;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @AT\Type("Zend\Form\Element\Email")
-     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
-     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
-     * @AT\Validator({"name":"EmailAddress"})
-     * @AT\Required(false)
-     */
-    protected $paypalEmail;
-
-    /**
-     * @var string
-     * @ORM\Column(name="activation_code", type="string", length=250, nullable=true)
-     * @AT\Exclude
-     */
-    protected $activationCode;
-
-    /**
-     * Synchronized product with magento
-     *
-     * @var string
-     * @ORM\Column(name="synchronized", type="boolean")
-     * @AT\Exclude
-     */
-    protected $synchronized;
-
-    /**
      * @AT\Type("Zend\Form\Element\Submit")
      */
     public $submit;
@@ -187,9 +132,6 @@ class User implements UserInterface, ProviderInterface
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
         $this->roles = new ArrayCollection();
-        $this->addresses = new ArrayCollection();
-        $this->products = new ArrayCollection();
-        $this->synchronized = false;
     }
 
     /**
@@ -213,7 +155,7 @@ class User implements UserInterface, ProviderInterface
         $this->id = (int) $id;
         return $this;
     }
-
+    
     /**
      * Get id.
      *
@@ -288,16 +230,6 @@ class User implements UserInterface, ProviderInterface
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Get first + last name.
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
     /**
@@ -389,52 +321,6 @@ class User implements UserInterface, ProviderInterface
     }
 
     /**
-     * Set createdAt
-     *
-     * @param DateTime $createdAt
-     * @return User
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param DateTime $updatedAt
-     * @return User
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * Add a role to the user.
      *
      * @param \Core\Entity\Role $role
@@ -469,37 +355,51 @@ class User implements UserInterface, ProviderInterface
     }
 
     /**
-     * Add address
+     * Set createdAt
      *
-     * @param \Core\Entity\UserAddress $address
+     * @param \DateTime $createdAt
      *
      * @return User
      */
-    public function addAddress($address)
+    public function setCreatedAt($createdAt)
     {
-        $this->addresses[] = $address;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Remove address
+     * Get createdAt
      *
-     * @param \Core\Entity\UserAddress $address
+     * @return \DateTime
      */
-    public function removeAddress($address)
+    public function getCreatedAt()
     {
-        $this->addresses->removeElement($address);
+        return $this->createdAt;
     }
 
     /**
-     * Get addresses
+     * Set updatedAt
      *
-     * @return \Core\Entity\UserAddress []
+     * @param \DateTime $updatedAt
+     *
+     * @return User
      */
-    public function getAddresses()
+    public function setUpdatedAt($updatedAt)
     {
-        return $this->addresses;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**
@@ -524,118 +424,5 @@ class User implements UserInterface, ProviderInterface
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    /**
-     * Add product
-     *
-     * @param \Core\Entity\Product $product
-     *
-     * @return User
-     */
-    public function addProduct($product)
-    {
-        $this->products[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \Core\Entity\Product $product
-     */
-    public function removeProduct($product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Core\Entity\Product []
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * Set activationCode
-     *
-     * @param string $activationCode
-     *
-     * @return User
-     */
-    public function setActivationCode($activationCode)
-    {
-        $this->activationCode = $activationCode;
-
-        return $this;
-    }
-
-    /**
-     * Get activationCode
-     *
-     * @return string
-     */
-    public function getActivationCode()
-    {
-        return $this->activationCode;
-    }
-
-    /**
-     * Set paypalEmail
-     *
-     * @param string $paypalEmail
-     *
-     * @return User
-     */
-    public function setPaypalEmail($paypalEmail)
-    {
-        $this->paypalEmail = $paypalEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get paypalEmail
-     *
-     * @return string
-     */
-    public function getPaypalEmail()
-    {
-        return $this->paypalEmail;
-    }
-
-    /**
-     * Set synchronized
-     *
-     * @param boolean $synchronized
-     * @return self
-     */
-    public function setSynchronized($synchronized)
-    {
-        $this->synchronized = $synchronized;
-
-        return $this;
-    }
-
-    /**
-     * Get synchronized
-     *
-     * @return boolean
-     */
-    public function getSynchronized()
-    {
-        return $this->synchronized;
-    }
-
-    /**
-     * @return \Core\Service\User
-     */
-    public function getService()
-    {
-        return new UserService($this);
     }
 }

@@ -3,6 +3,11 @@
 namespace Application;
 
 return [
+    'controllers' => [
+        'invokables' => [
+            'Application\Controller\IndexController' => 'Application\Controller\IndexController',
+        ],
+    ],
     'router' => [
         'routes' => [
             'home' => [
@@ -10,65 +15,103 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\IndexController',
                         'action'     => 'index',
                     ],
                 ],
             ],
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => [
-                'type'    => 'Literal',
+            'zfcuser/register' => [
+                'type' => 'Literal',
                 'options' => [
-                    'route'    => '/application',
+                    'route' => '/register',
                     'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
+                        'controller' => 'zfcuser',
+                        'action' => 'register',
+                    ],
+                ],
+            ],
+            'zfcuser/login' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/login',
+                    'defaults' => [
+                        'controller' => 'zfcuser',
+                        'action' => 'login',
+                    ],
+                ],
+            ],
+            'zfcuser/authenticate' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/authenticate',
+                    'defaults' => [
+                        'controller' => 'zfcuser',
+                        'action' => 'authenticate',
+                    ],
+                ],
+            ],
+            'zfcuser/logout' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/logout',
+                    'defaults' => [
+                        'controller' => 'ScnSocialAuth-User',
+                        'action' => 'logout',
+                    ],
+                ],
+            ],
+            'zfcuser/forgotpassword' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/forgot-password',
+                    'defaults' => [
+                        'controller' => 'goalioforgotpassword_forgot',
+                        'action' => 'forgot',
+                    ],
+                ],
+            ],
+            'zfcuser/resetpassword' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/reset-password/:userId/:token',
+                    'defaults' => [
+                        'controller' => 'goalioforgotpassword_forgot',
+                        'action' => 'reset',
+                    ],
+                    'constraints' => [
+                        'userId'  => '[A-Fa-f0-9]+',
+                        'token' => '[A-F0-9]+',
+                    ],
+                ],
+            ],
+
+            // disable unused routes
+            'zfcuser' => [
+                'options' => [
+                    'route' => '',
+                    'defaults' => [
+                        'controller' => 'zfcuser',
+                        'action' => 'index',
                     ],
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'default' => [
-                        'type'    => 'Segment',
+                    'changepassword' => [
                         'options' => [
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => [
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ],
                             'defaults' => [
+                                'controller' => null,
+                            ],
+                        ],
+                    ],
+                    'changeemail' => [
+                        'options' => [
+                            'defaults' => [
+                                'controller' => null,
                             ],
                         ],
                     ],
                 ],
             ],
-        ],
-    ],
-    'service_manager' => [
-        'abstract_factories' => [
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ],
-        'factories' => [
-            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
-        ],
-    ],
-    'translator' => [
-        'locale' => 'en_US',
-        'translation_file_patterns' => [
-            [
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ],
-        ],
-    ],
-    'controllers' => [
-        'invokables' => [
-            'Application\Controller\Index' => Controller\IndexController::class
         ],
     ],
     'view_manager' => [
@@ -77,21 +120,6 @@ return [
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
-        ],
-        'template_path_stack' => [
-            __DIR__ . '/../view',
-        ],
-    ],
-    // Placeholder for console routes
-    'console' => [
-        'router' => [
-            'routes' => [
-            ],
-        ],
+        'template_map'             => include __DIR__ . '/../template_map.php',
     ],
 ];

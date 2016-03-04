@@ -1,0 +1,3 @@
+<?php foreach ($paginator as $order) : ?>
+    <?php echo $this->partial('user/purchases/partials/item', ['order' => $order]); ?>
+<?php endforeach; ?>

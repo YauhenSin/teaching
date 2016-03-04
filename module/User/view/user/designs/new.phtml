@@ -1,0 +1,252 @@
+<?php
+    $this->inlineScript()
+        ->appendFile($this->basePath('module/core/js/dropzone.min.js'))
+        ->appendFile($this->basePath('module/user/designs/js/new.js'))
+    ;
+    $form = $this->form;
+    $form->prepare();
+?>
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title"><?php echo $this->translate('Upload Designs');?></h2>
+        <ul class="download__list clearfix">
+            <li class="download__list__item  active <?php echo $this->design->getId() ? 'done-success' : ''; ?>">
+                <i class="fa fa-check-circle"></i> <?php echo $this->translate('Upload files');?>
+            </li>
+            <li class="download__list__item <?php echo $this->design->getId() ? 'active' : ''; ?>">
+                <i class="fa fa-check-circle"></i> <?php echo $this->translate('Confirm copyright');?>
+            </li>
+            <li class="download__list__item">
+                <i class="fa fa-check-circle"></i> <?php echo $this->translate('Describe design');?>
+            </li>
+            <li class="download__list__item">
+                <i class="fa fa-check-circle"></i> <?php echo $this->translate('Publish design');?>
+            </li>
+        </ul>
+        <?php if ($this->design->getId()) : ?>
+            <form action="<?php echo $this->url('user_account_designs', ['action' => 'file-upload', 'id' => $this->design->getId()]); ?>" id="dropFiles" class="dropzone is-hidden" enctype="multipart/form-data">
+        <?php else : ?>
+            <form action="<?php echo $this->url('user_account_designs', ['action' => 'file-upload']); ?>" id="dropFiles" class="dropzone dz-clickable" enctype="multipart/form-data">
+        <?php endif; ?>
+            <div class="dropzone__content dz-message">
+                <h3 class="dropzone__content__title"><?php echo $this->translate('Drag files here');?></h3>
+                <div class="dropzone__content__or">
+                    <span class="dropzone__content__or__text"><?php echo $this->translate('or');?></span>
+                </div>
+                <span class="btn__accept" style="cursor: pointer"><?php echo $this->translate('Browse files');?></span>
+                <h3 class="dropzone__content__list__title">
+                    <?php echo $this->translate('Supported formats'); ?>
+                </h3>
+                <ul class="dropzone__content__list">
+                    <li class="dropzone__content__list__item">JPG</li>
+                    <li class="dropzone__content__list__item">AI</li>
+                    <li class="dropzone__content__list__item">GIF</li>
+                    <li class="dropzone__content__list__item">SDR</li>
+                    <li class="dropzone__content__list__item">EPS</li>
+                    <li class="dropzone__content__list__item">PNG</li>
+                    <li class="dropzone__content__list__item">SVG</li>
+                </ul>
+                <p class="dropzone__content__text"><?php echo $this->translate('Image size 40 to 4000 px, file size 10 MB max');?>.</p>
+                <p class="dropzone__content__text"><?php echo $this->translate('Vector file 3 colors max');?>.</p>
+            </div>
+        </form>
+        <div class="row confirm__upload block__upload <?php echo $this->design->getId() ? '' : ' is-hidden'; ?>" data-upload>
+            <div class="col-sm-6">
+                <div class="upload__gallery">
+                    <img src="<?php echo $this->design->getImage() ? $this->design->getImage()->getFile()->getRelativeUrl() : ''; ?>" alt="" class="upload__gallery__picture" height="320">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="upload__content">
+                    <form>
+                        <h3 class="upload__title"><?php echo $this->translate('Before you continue');?></h3>
+                        <p class="upload__text">
+                            <?php echo $this->translate('Please confirm that this is your design and that it does not infringe any rights (particularly copyrights, personal rights or trademarks). We audit every design for legal compliance and will reject any infringing designs.');?>
+                        </p>
+                        <label id="" class="cb-checkbox w-100 m-t20">
+                            <input type="checkbox" name="terms" checked="checked">
+                            <?php echo $this->translate('I confirm that I am allowed to use this design');?>
+                        </label>
+                        <div class="form-group has-error error-messages-terms"></div>
+                        <div class="m-t40">
+                            <button type="button" class="btn__primary m-r20 edit-design-back"><?php echo $this->translate('Back');?></button>
+                            <?php if ($this->design->getId()) : ?>
+                                <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'terms-confirm', 'id' => $this->design->getId()]); ?>">
+                            <?php else : ?>
+                                <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'terms-confirm']); ?>">
+                            <?php endif; ?>
+                                    <?php echo $this->translate('Continue');?>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row block__upload is-hidden" data-upload>
+            <div class="col-sm-6">
+                <div class="upload__gallery">
+                    <img src="<?php echo $this->design->getImage() ? $this->design->getImage()->getFile()->getRelativeUrl() : ''; ?>" alt="" class="upload__gallery__picture" height="320">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="upload__content">
+                    <form>
+                        <h3 class="upload__title"><?php echo $this->translate('Describe design');?></h3>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="form-label"><?php echo $this->translate('Add title');?></p>
+                                <div class="form-group">
+                                    <?php $element = $form
+                                        ->get('name')
+                                        ->setAttributes([
+                                            'class' => 'form-control',
+                                        ]);
+                                    ?>
+                                    <?php echo $this->formInput($element); ?>
+                                    <div class="form-group has-error error-messages-name"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="form-label"><?php echo $this->translate('Specify at least 3 tags for your design');?></p>
+                                <div class="form-group">
+                                    <input type="text" name="tags" value="<?php echo $this->design->getStringTags(); ?>" class="form-control tags">
+                                </div>
+                                <div class="form-group has-error error-messages-tags"></div>
+                                <p class="form-label"><?php echo $this->translate('Select category');?></p>
+                                <div class="form-group">
+                                    <?php $element = $form
+                                        ->get('category')
+                                        ->setAttributes([
+                                            'class' => 'chosen-select',
+                                        ]);
+                                    ?>
+                                    <?php echo $this->formSelect($element); ?>
+                                    <div class="form-group has-error error-messages-category"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-t40">
+                            <button type="button" class="btn__primary m-r20 edit-design-back"><?php echo $this->translate('Back');?></button>
+                            <?php if ($this->design->getId()) : ?>
+                                <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'description', 'id' => $this->design->getId()]); ?>">
+                            <?php else : ?>
+                                <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'description']); ?>">
+                            <?php endif; ?>
+                                    <?php echo $this->translate('Continue');?>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row block__upload is-hidden" data-upload>
+            <div class="col-sm-6">
+                <div class="upload__gallery">
+                    <img src="<?php echo $this->design->getImage() ? $this->design->getImage()->getFile()->getRelativeUrl() : ''; ?>" alt="" class="upload__gallery__picture" height="320">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="upload__content">
+                    <form>
+                        <h3 class="upload__title"><?php echo $this->translate('Description');?></h3>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="form-label"><?php echo $this->translate('Design ID');?>:</p>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="text-page design-data-id"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="form-label"><?php echo $this->translate('Design Name');?>:</p>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="text-page design-data-name"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="form-label"><?php echo $this->translate('Design Type');?>:</p>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="text-page design-data-type"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="form-label"><?php echo $this->translate('Scaling');?>:</p>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="text-page"><?php echo $this->translate('Scalable (min: 50%)');?></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="form-label"><?php echo $this->translate('Size');?>:</p>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="text-page design-data-size_px"></p>
+                                <p class="text-page">8.5 inch x 6.4 inch</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="form-label"><?php echo $this->translate('Price');?>:</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div class="form-group">
+                                            <?php $element = $form
+                                                ->get('price')
+                                                ->setAttributes([
+                                                    'class' => 'form-control',
+                                                ]);
+                                            ?>
+                                            <?php echo $this->formInput($element); ?>
+                                            <div class="form-group has-error error-messages-price"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p class="text-page p-t5">
+                                            $
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="pink_text p-t5">
+                                    <?php echo $this->translate('You will receive'); ?> $<span data-commission="<?php echo $this->commissionAmount; ?>" class="receive">0</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="m-t40">
+                                    <button type="button" class="btn__primary m-r20 edit-design-back"><?php echo $this->translate('Back');?></button>
+                                    <?php if ($this->design->getId()) : ?>
+                                        <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'publish', 'id' => $this->design->getId()]);?>">
+                                    <?php else : ?>
+                                        <button type="button" class="btn__default edit-design-forward" data-href="<?php echo $this->url('user_account_designs', ['action' => 'publish']);?>">
+                                    <?php endif; ?>
+                                    <?php echo $this->translate('Publish Design');?>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

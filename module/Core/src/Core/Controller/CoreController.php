@@ -41,22 +41,6 @@ class CoreController extends AbstractActionController
     }
 
     /**
-     * @return \Core\Controller\Plugin\UploadFilePlugin
-     */
-    protected function getUploadFilePlugin()
-    {
-        return $this->UploadFilePlugin();
-    }
-
-    /**
-     * @return \Core\Service\UserSession
-     */
-    public function getUserSession()
-    {
-        return $this->getSl()->get('xeira_user_session');
-    }
-
-    /**
      * @param array $messages
      * @param string $namespace
      */

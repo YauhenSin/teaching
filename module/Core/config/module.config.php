@@ -3,6 +3,15 @@
 namespace Core;
 
 return [
+    'service_manager' => [
+        'abstract_factories' => [
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory',
+        ],
+        'factories' => [
+            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+        ],
+    ],
     'doctrine' => [
         'driver' => [
             'teaching_annotation_driver' => [
@@ -20,8 +29,14 @@ return [
             ],
         ],
     ],
+    'console' => [
+        'router' => [
+            'routes' => [
+            ],
+        ],
+    ],
     'view_manager' => [
-//        'template_map' => include __DIR__ . '/../template_map.php',
+        'template_map' => include __DIR__ . '/../template_map.php',
         'strategies' => [
             'ViewJsonStrategy',
         ],

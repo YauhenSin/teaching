@@ -4,6 +4,8 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Controller\ControllerManager;
+use Application\Controller\AuthController;
 
 class Module
 {
@@ -17,6 +19,21 @@ class Module
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getControllerConfig()
+    {
+        return [
+            'factories' => [
+                'zfcuser' => function (ControllerManager $controllerManager) {
+                    return new AuthController(
+                        $controllerManager
+                            ->getServiceLocator()
+                            ->get('zfcuser_redirect_callback')
+                    );
+                }
+            ]
+        ];
     }
 
     public function getAutoloaderConfig()

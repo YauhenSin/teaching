@@ -1,0 +1,155 @@
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('Order details'); ?>
+        </h2>
+        <table class="order__table responsive__table m-tb10">
+            <thead class="b-None">
+            <tr>
+                <th><?php echo $this->translate('Shipping address'); ?></th>
+                <th><?php echo $this->translate('Shipping method'); ?></th>
+                <th><?php echo $this->translate('Payment Info'); ?></th>
+                <th><?php echo $this->translate('Status'); ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td data-th="<?php echo $this->translate('Shipping address'); ?>:">
+                    <span>
+                        <?php echo $this->order->getShippingAddress(); ?>
+                    </span>
+                    <span>
+                        <?php echo $this->order->getShippingCity() . ' ' . $this->order->getShippingState(); ?>
+                    </span>
+                    <span>
+                        <?php echo $this->order->getShippingPhone(); ?>
+                    </span>
+                </td>
+                <td data-th="<?php echo $this->translate('Shipping method'); ?>:">
+                    <?php echo $this->order->getDeliveryMethodTitle(); ?>
+                </td>
+                <td data-th="<?php echo $this->translate('Payment Info'); ?>:">
+                    <span>
+                        <?php echo $this->translate('Cardholder Name'); ?>: <?php echo $this->order->getCardName(); ?>
+                    </span>
+                    <span>
+                        <?php echo $this->translate('Payment type'); ?>: Mastercard
+                    </span>
+                    <span>
+                        <?php echo $this->translate('Card number'); ?>: <?php echo $this->order->getCardNumber(); ?>
+                    </span>
+                </td>
+                <td data-th="<?php echo $this->translate('Status'); ?>:">
+                    <span class="order__completed">
+                        <i class="m-r5 icon-complete"></i>
+                        <?php echo $this->translate('Completed'); ?>
+                    </span>
+                    <span class="order__pending">
+                        <i class="m-r5 icon-pending"></i>
+                        <?php echo $this->translate('Pending'); ?>
+                    </span>
+                    <span class="order__cancelled">
+                        <i class="m-r5 icon-cancelled"></i>
+                        <?php echo $this->translate('Cancelled'); ?>
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="checkout__products responsive__table b-Top">
+            <thead>
+            <tr>
+                <th></th>
+                <th><?php echo $this->translate('Product Name'); ?></th>
+                <th><?php echo $this->translate('QTY'); ?></th>
+                <th><?php echo $this->translate('Total'); ?></th>
+                <th><?php echo $this->translate('Status'); ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->order->getOrderItems() as $orderItem) : ?>
+                <tr>
+                    <td data-th="<?php echo $this->translate('Product Image'); ?>:">
+                        <div class="product__preview">
+                            <div class="product__preview__picture">
+                                <?php if($orderItem->getPreviewImage()): ?>
+                                    <img src="<?php echo $this->imageUrl($orderItem->getPreviewImage(), 'preview'); ?>" alt="" class="product__preview__avatar">
+                                <?php else: ?>
+                                    <img src="<?php echo $this->imageUrl($orderItem->getProduct()->getImages()->first(), 'preview'); ?>" alt="" class="product__preview__avatar">
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="<?php echo $this->translate('Product Name'); ?>:">
+                        <h2 class="checkout__products__title">
+                            <?php echo $orderItem->getProduct()->getName(); ?>
+                        </h2>
+                        <ul class="checkout__products__list">
+                            <li class="checkout__products__list__item">
+                                <?php echo $orderItem->getProduct()->getType()->getTitle(); ?> <?php echo $this->translate('Size'); ?> <span><?php echo $orderItem->getProductSize()->getName(); ?></span>
+                            </li>
+                            <li class="checkout__products__list__item">
+                                <?php echo $orderItem->getProduct()->getType()->getTitle(); ?> <?php echo $this->translate('Color'); ?> <span><?php echo $orderItem->getProductColor()->getLabel(); ?></span>
+                            </li>
+                            <li class="checkout__products__list__item">
+                                <?php echo $this->translate('Additional Options'); ?> <br>
+                                <span><?php echo $orderItem->getProductAdditional(); ?></span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td data-th="<?php echo $this->translate('QTY'); ?>:">
+                        <?php echo $orderItem->getQuantity(); ?>
+                    </td>
+                    <td data-th="<?php echo $this->translate('Total'); ?>:">
+                        <?php echo $this->currencySwitcher()->currencyFormat($orderItem->getProductAmount() * $orderItem->getQuantity(), $this->order->getCurrencyCode(), false); ?>
+                    </td>
+                    <td data-th="<?php echo $this->translate('Status'); ?>:">
+                        <span class="order__completed">
+                            <?php echo $this->translate($orderItem->getService()->getStatusLabel()); ?>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="b-Top clearfix m-tb20 p-tb20">
+            <div class="text-right">
+                <p class="text-page m-b0">
+                    <?php echo $this->translate('Subtotal'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order($this->order)->getSubtotalAmount(), $this->order->getCurrencyCode(), false); ?>
+                </p>
+                <p class="text-page m-b0">
+                    <?php echo $this->translate('Shipping price'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order->getDeliveryAmount(), $this->order->getCurrencyCode(), false); ?>
+                </p>
+                <?php if ((bool)$this->order->getPaymentMethodAmount()) : ?>
+                <p class="text-page m-b0">
+                    <?php echo $this->translate('Payment method fee'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order->getPaymentMethodAmount(), $this->order->getCurrencyCode(), false); ?>
+                </p>
+                <?php endif; ?>
+                <?php if ((bool)$this->order->getDiscountAmount()) : ?>
+                <p class="text-lighten m-b0">
+                    <?php echo $this->translate('Total Savings'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order->getDiscountAmount(), $this->order->getCurrencyCode(), false); ?>
+                </p>
+                <?php endif; ?>
+                <p class="text-bold">
+                    <?php echo $this->translate('VAT'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order->getVatAmount(), $this->order->getCurrencyCode(), false); ?>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#" class="link__page-14">
+                        <i class="icon-boll"></i> <?php echo $this->translate('I have problems with this order'); ?>
+                    </a>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="text-mutted text-bold">
+                        <?php echo $this->translate('Total price'); ?>: <?php echo $this->currencySwitcher()->currencyFormat($this->order($this->order)->getTotalAmount(), $this->order->getCurrencyCode(), false); ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

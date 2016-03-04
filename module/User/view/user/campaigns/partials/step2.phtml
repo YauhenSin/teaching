@@ -1,0 +1,128 @@
+<div class="block__upload is-hidden">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="configurator__body">
+                <h3 class="configurator__body__title">
+                    <?php echo $this->translate('Sales goal'); ?>
+                </h3>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="slider" class="configurator__body__slider m-tb20">
+                            <div class="configurator__body__slider__content" data-slider></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="input-group slider__value">
+                            <span class="input-group-addon"><?php echo $this->translate('# of shirts'); ?></span>
+                            <?php $element = $form
+                                ->get('count')
+                                ->setAttributes([
+                                    'id' => 'slider-count',
+                                    'class' => 'form-control text-center',
+                                ]);
+                            ?>
+                            <?php echo $this->formInput($element); ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-sm-6">
+                        <p class="title_text">
+                            <?php echo $this->translate('Your goal is the number of shirts you’re aiming to sell, but we’ll print your campaign as long as you sell enough to generate a profit'); ?>
+                        </p>
+                    </div>
+                </div>
+                <h3 class="configurator__body__title">
+                    <?php echo $this->translate('Estimated profit'); ?>
+                </h3>
+                <h1 class="pink_text text-bold">$801+</h1>
+                <h3 class="configurator__body__title">
+                    <?php echo $this->translate('Style & design'); ?>
+                </h3>
+                <div class="configurator__body__product clearfix">
+                    <div class="configurator__body__product__picture">
+                        <img src="images/products/shirt1.png" alt="">
+                    </div>
+                    <div class="configurator__body__product__content">
+                        <h6 class="configurator__body__product__content__title">
+                            <?php echo $this->translate('Teespring Premium Tee'); ?>
+                        </h6>
+                        <p class="configurator__body__product__content__text">
+                            $13.36 <?php echo $this->translate('profit/sale'); ?>
+                        </p>
+                        <div class="configurator__color">
+                            <div class="color__block color__black"></div>
+                        </div>
+                        <div class="configurator__color">
+                            <div class="color__block color__green"></div>
+                        </div>
+                        <div class="configurator__color">
+                            <div class="color__block color__orange"></div>
+                        </div>
+                        <div class="configurator__color color__empty"></div>
+                        <div class="configurator__color color__empty"></div>
+                        <div class="configurator__color color__empty"></div>
+                        <p class="configurator__body__product__price">
+                            22.00
+                        </p>
+                    </div>
+                </div>
+                <p class="text-muted segoe__family m-t20 p-b10 b-Bottom">
+                    <?php echo $this->translate('You can add 10 more product options.'); ?>
+                </p>
+                <div class="row is-hide add-style">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">V-Neck Tees</option>
+                                <option value="">Tees</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Canvas Ringspun V-Neck</option>
+                                <option value="">V-Neck</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn__default btn-small w-100">
+                            <?php echo $this->translate('Add'); ?>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="" class="link__page-16" data-toggle-block=".add-style">
+                            <i class="icon-circle-plus m-r5"></i> <?php echo $this->translate('Add style'); ?>
+                        </a>
+                    </div>
+                </div>
+                <p class="title_text segoe__family m-t20">
+                    <?php echo $this->translate('Optimize your campaign by adding an additional style'); ?>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn__primary m-r20" data-back="">
+                        <?php echo $this->translate('Back'); ?>
+                    </button>
+                    <button class="btn__default" data-forward="">
+                        <?php echo $this->translate('Continue'); ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 text-center p-t20">
+            <img src="images/configurator/shirt.png" alt="">
+            <button class="btn__primary">
+                <?php echo $this->translate('Front'); ?>
+            </button>
+            <button class="btn__primary">
+                <?php echo $this->translate('Back'); ?>
+            </button>
+        </div>
+    </div>
+</div>

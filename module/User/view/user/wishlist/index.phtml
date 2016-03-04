@@ -1,0 +1,32 @@
+<?php
+    $this->inlineScript()
+        ->appendFile($this->basePath('module/user/wishlist/js/index.js'))
+    ;
+    $form = $this->form;
+    $form->prepare();
+?>
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title"><?php echo $this->translate('Wishlist'); ?></h2>
+        <?php if ($this->paginator->getCurrentItemCount()) : ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="search-results">
+                        <?php echo $this->partial('user/wishlist/partials/list', ['paginator' => $this->paginator, 'form' => $form]); ?>
+                    </div>
+                    <ul class="pagination">
+                        <?php echo $this->paginationControl($this->paginator, 'Sliding', 'core/partials/paginator/paginator'); ?>
+                    </ul>
+                </div>
+            </div>
+        <?php else : ?>
+            <p class="title_text">
+                <?php echo $this->translate('There are no product yet. Please go to'); ?> <a href="<?php echo $this->url('application_catalog_index'); ?>" class="link__page-14"><?php echo $this->translate('catalog'); ?></a>
+            </p>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('My Designs');?>
+        </h2>
+        <p class="text-lighten">
+            <?php echo $this->translate('You must to set your PayPal account email on setting page');?>.
+        </p>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <a href="<?php echo $this->url('user_account_settings', ['action' => 'edit-profile']); ?>" class="btn__accept">
+                    <?php echo $this->translate('Set PayPal Account');?>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<?php
+    $this->inlineScript()
+        ->appendFile($this->basePath('module/user/campaigns/js/new.js'))
+    ;
+    $form = $this->form;
+    $form->prepare();
+?>
+<?php echo $this->breadcrumbs; ?>
+<div class="configurator__steps">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="head__title">
+                <?php echo $this->translate('Create your campaign'); ?>
+            </h2>
+        </div>
+    </div>
+    <ol class="configurator__list">
+        <li class="configurator__list__item active" data-list>
+            <?php echo $this->translate('Create your design'); ?>
+        </li>
+        <li class="configurator__list__item" data-list>
+            <?php echo $this->translate('Set a goal'); ?>
+        </li>
+        <li class="configurator__list__item" data-list>
+            <?php echo $this->translate('Add a description'); ?>
+        </li>
+    </ol>
+</div>
+<?php echo $this->partial('user/campaigns/partials/step1', []); ?>
+<?php echo $this->partial('user/campaigns/partials/step2', ['form' => $form]); ?>
+<?php echo $this->partial('user/campaigns/partials/step3', ['form' => $form]); ?>

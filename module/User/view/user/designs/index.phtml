@@ -1,0 +1,67 @@
+<?php
+    $this->inlineScript()
+        ->appendFile($this->basePath('module/user/designs/js/index.js'))
+    ;
+    $form = $this->form;
+    $form->prepare();
+?>
+<?php echo $this->breadcrumbs; ?>
+<div class="row">
+    <div class="col-sm-3">
+        <?php echo $this->sidebar; ?>
+    </div>
+    <div class="col-sm-9">
+        <h2 class="head__title">
+            <?php echo $this->translate('My Designs'); ?>
+        </h2>
+        <div class="row">
+            <div class="col-md-4 p-t10">
+                <div class="form-group form-search">
+                    <input type="text" id="name" class="form-control" placeholder="<?php echo $this->translate('Search entire store here');?>...">
+                </div>
+            </div>
+            <div class="col-md-2 md-right p-t10">
+                <p class="text-page p-t5 m-b0"><?php echo $this->translate('Sort By');?>:</p>
+            </div>
+            <div class="col-md-3 p-t10">
+                <div class="form-group">
+                    <?php $element = $form
+                        ->get('category')
+                        ->setOptions([
+                            'empty_option' => 'All categories',
+                        ])
+                        ->setAttributes([
+                            'id' => 'category',
+                            'class' => 'form-control',
+                        ]);
+                    ?>
+                    <?php echo $this->formSelect($element); ?>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="<?php echo $this->url('user_account_designs', ['action' => 'new']); ?>" class="btn__accept m-0">
+                    <?php echo $this->translate('Upload design');?>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="b-Top m-t10 catalog">
+                    <div class="row search-results">
+                        <?php echo $this->partial('user/designs/partials/user-designs-list', $this->paginator->getCurrentItems()->getArrayCopy()); ?>
+                    </div>
+                    <div class="loading__block col-xs-12 is-hidden">
+                        <i class="fa fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="pagination">
+                    <?php echo $this->paginationControl($this->paginator, 'Sliding', 'core/partials/paginator/paginator'); ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
