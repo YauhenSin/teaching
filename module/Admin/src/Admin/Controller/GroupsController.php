@@ -90,6 +90,6 @@ class GroupsController extends CoreController
      */
     protected function getTeacherRole()
     {
-        return $this->getEntity('Role', 3);
+        return $this->getRepository('Role')->findOneBy(['roleId' => 'teacher']);
     }
 }

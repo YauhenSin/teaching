@@ -31,6 +31,7 @@ $form->prepare();
         <div class="form-group">
             <?php echo $this->formElement($form->get('password')->setAttributes([
                 'class' => 'form-control',
+                'autocomplete' => 'off',
                 'placeholder' => 'Password',
             ])); ?>
             <?php echo $this->formElementErrors()->render($form->get('password')); ?>

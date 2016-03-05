@@ -120,7 +120,7 @@ class StudentsController extends CoreController
      */
     protected function getStudentRole()
     {
-        return $this->getEntity('Role', 2);
+        return $this->getRepository('Role')->findOneBy(['roleId' => 'student']);
     }
 
     /**
@@ -128,6 +128,6 @@ class StudentsController extends CoreController
      */
     protected function getTeacherRole()
     {
-        return $this->getEntity('Role', 3);
+        return $this->getRepository('Role')->findOneBy(['roleId' => 'teacher']);
     }
 }

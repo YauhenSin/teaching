@@ -115,6 +115,6 @@ class AdminsController extends CoreController
      */
     protected function getAdminRole()
     {
-        return $this->getEntity('Role', 4);
+        return $this->getRepository('Role')->findOneBy(['roleId' => 'admin']);
     }
 }
