@@ -35,6 +35,7 @@ return [
 
                 ['route' => 'admin_index_index', 'roles' => ['admin']],
                 ['route' => 'admin_teachers_index', 'roles' => ['admin']],
+                ['route' => 'admin_groups_index', 'roles' => ['admin']],
             ],
         ],
     ],

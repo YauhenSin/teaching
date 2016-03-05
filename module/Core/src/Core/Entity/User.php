@@ -47,6 +47,14 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var string
+     * @ORM\Column(name="middle_name", type="string", length=255, nullable=true)
+     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
+     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     */
+    protected $middleName;
+
+    /**
+     * @var string
      * @ORM\Column(name="last_name", type="string", length=255)
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
@@ -55,10 +63,18 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var string
+     * @ORM\Column(name="contact_name", type="string", length=255, nullable=true)
+     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
+     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     */
+    protected $contactName;
+
+    /**
+     * @var string
      * @ORM\Column(name="password", type="string", length=128)
      * @AT\Type("Zend\Form\Element\Password")
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
-     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     * @AT\Validator({"name":"StringLength", "options":{"min":"6", "max":"128"}})
      */
     protected $password;
 
@@ -74,7 +90,6 @@ class User implements UserInterface, ProviderInterface
      * @ORM\Column(name="username", type="string", length=255, nullable=true)
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
-     * @AT\Required(false)
      */
     protected $username;
 
@@ -83,23 +98,25 @@ class User implements UserInterface, ProviderInterface
      * @ORM\Column(name="display_name", type="string", length=255, nullable=true)
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
-     * @AT\Required(false)
      */
     protected $displayName;
 
     /**
-     * @var DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * For student
+     * @var Group
+     * @ORM\ManyToOne(targetEntity="Core\Entity\Group", inversedBy="students")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=true)
      * @AT\Exclude
-     */
-    protected $createdAt;
+     **/
+    protected $group;
 
     /**
-     * @var DateTime
-     * @ORM\Column(name="updated_at", type="datetime")
+     * For teacher
+     * @var Group []
+     * @ORM\OneToMany(targetEntity="Core\Entity\Group", mappedBy="teacher")
      * @AT\Exclude
-     */
-    protected $updatedAt;
+     **/
+    protected $groups;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -116,9 +133,53 @@ class User implements UserInterface, ProviderInterface
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
-     * @AT\Required(false)
      */
     protected $phone;
+
+    /**
+     * @var string
+     * @ORM\Column(name="additional_phone", type="string", length=255, nullable=true)
+     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
+     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     * @AT\Required(false)
+     */
+    protected $additionalPhone;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="date_of_birth", type="datetime", nullable=true)
+     * @AT\Exclude
+     */
+    protected $dateOfBirth;
+
+    /**
+     * @var float
+     * @ORM\Column(name="education_price", type="float", nullable=true)
+     * @AT\Validator({"name":"Float"})
+     */
+    protected $educationPrice;
+
+    /**
+     * @var string
+     * @ORM\Column(name="education_price_note", type="string", length=255, nullable=true)
+     * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
+     * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     */
+    protected $educationPriceNote;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="created_at", type="datetime")
+     * @AT\Exclude
+     */
+    protected $createdAt;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="updated_at", type="datetime")
+     * @AT\Exclude
+     */
+    protected $updatedAt;
 
     /**
      * @AT\Type("Zend\Form\Element\Submit")
@@ -132,6 +193,7 @@ class User implements UserInterface, ProviderInterface
     {
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
+        $this->groups = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
 
@@ -425,6 +487,208 @@ class User implements UserInterface, ProviderInterface
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Core\Entity\Group $group
+     *
+     * @return User
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Core\Entity\Group
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Add group
+     *
+     * @param \Core\Entity\Group $group
+     *
+     * @return User
+     */
+    public function addGroup($group)
+    {
+        $this->groups[] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Remove group
+     *
+     * @param \Core\Entity\Group $group
+     */
+    public function removeGroup($group)
+    {
+        $this->groups->removeElement($group);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * Set middleName
+     *
+     * @param string $middleName
+     *
+     * @return User
+     */
+    public function setMiddleName($middleName)
+    {
+        $this->middleName = $middleName;
+
+        return $this;
+    }
+
+    /**
+     * Get middleName
+     *
+     * @return string
+     */
+    public function getMiddleName()
+    {
+        return $this->middleName;
+    }
+
+    /**
+     * Set contactName
+     *
+     * @param string $contactName
+     *
+     * @return User
+     */
+    public function setContactName($contactName)
+    {
+        $this->contactName = $contactName;
+
+        return $this;
+    }
+
+    /**
+     * Get contactName
+     *
+     * @return string
+     */
+    public function getContactName()
+    {
+        return $this->contactName;
+    }
+
+    /**
+     * Set additionalPhone
+     *
+     * @param string $additionalPhone
+     *
+     * @return User
+     */
+    public function setAdditionalPhone($additionalPhone)
+    {
+        $this->additionalPhone = $additionalPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get additionalPhone
+     *
+     * @return string
+     */
+    public function getAdditionalPhone()
+    {
+        return $this->additionalPhone;
+    }
+
+    /**
+     * Set dateOfBirth
+     *
+     * @param \DateTime $dateOfBirth
+     *
+     * @return User
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOfBirth
+     *
+     * @return \DateTime
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * Set educationPrice
+     *
+     * @param float $educationPrice
+     *
+     * @return User
+     */
+    public function setEducationPrice($educationPrice)
+    {
+        $this->educationPrice = $educationPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get educationPrice
+     *
+     * @return float
+     */
+    public function getEducationPrice()
+    {
+        return $this->educationPrice;
+    }
+
+    /**
+     * Set educationPriceNote
+     *
+     * @param string $educationPriceNote
+     *
+     * @return User
+     */
+    public function setEducationPriceNote($educationPriceNote)
+    {
+        $this->educationPriceNote = $educationPriceNote;
+
+        return $this;
+    }
+
+    /**
+     * Get educationPriceNote
+     *
+     * @return string
+     */
+    public function getEducationPriceNote()
+    {
+        return $this->educationPriceNote;
     }
 
     /**

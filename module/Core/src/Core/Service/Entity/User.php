@@ -20,4 +20,13 @@ class User extends AbstractEntityService
         $roles = $this->getUser()->getRoles();
         return $roles[0];
     }
+
+    /**
+     * @return string
+     */
+    public function getFirstLastName()
+    {
+        $user = $this->getUser();
+        return $user->getFirstName() . ' ' . $user->getLastName();
+    }
 }

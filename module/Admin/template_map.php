@@ -5,4 +5,7 @@ return array(
     'admin/teachers/new'   => __DIR__ . '/view/admin/teachers/new.phtml',
     'admin/teachers/edit'  => __DIR__ . '/view/admin/teachers/edit.phtml',
     'admin/index/index'    => __DIR__ . '/view/admin/index/index.phtml',
+    'admin/groups/index'   => __DIR__ . '/view/admin/groups/index.phtml',
+    'admin/groups/new'     => __DIR__ . '/view/admin/groups/new.phtml',
+    'admin/groups/edit'    => __DIR__ . '/view/admin/groups/edit.phtml',
 );

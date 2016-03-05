@@ -5,6 +5,7 @@ return [
         'invokables' => [
             'Admin\Controller\IndexController' => 'Admin\Controller\IndexController',
             'Admin\Controller\TeachersController' => 'Admin\Controller\TeachersController',
+            'Admin\Controller\GroupsController' => 'Admin\Controller\GroupsController',
         ],
     ],
     'router' => [
@@ -25,6 +26,16 @@ return [
                     'route' => '/admin/teachers[/:action[/:id]]',
                     'defaults' => [
                         'controller' => 'Admin\Controller\TeachersController',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
+            'admin_groups_index' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/admin/groups[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => 'Admin\Controller\GroupsController',
                         'action' => 'index',
                     ],
                 ],

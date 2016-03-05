@@ -4,6 +4,8 @@ namespace Admin\Controller;
 
 use Core\Controller\CoreController;
 use Core\Entity\User;
+use Core\Validator\UniqueObject;
+use DoctrineModule\Validator\NoObjectExists;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\View\Model\ViewModel;
 
@@ -19,12 +21,17 @@ class TeachersController extends CoreController
 
     public function newAction()
     {
+        $request = $this->getRequest();
         $user = new User();
         $form = $this->createForm($user);
-        $form->setValidationGroup([
-            'firstName', 'lastName', 'email', 'password'
-        ]);
-        $request = $this->getRequest();
+        $form->getInputFilter()->get('email')->getValidatorChain()->attach(new NoObjectExists([
+            'object_repository' => $this->getRepository('User'),
+            'fields' => [
+                'email',
+            ],
+        ]));
+        $validationGroup = ['firstName', 'middleName', 'lastName', 'phone', 'additionalPhone', 'email', 'password'];
+        $form->setValidationGroup($validationGroup);
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
@@ -51,11 +58,20 @@ class TeachersController extends CoreController
         if (!$user) {
             return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
         }
-        $form = $this->createForm($user);
-        $form->setValidationGroup([
-            'firstName', 'lastName', 'email'
-        ]);
         $request = $this->getRequest();
+        $form = $this->createForm($user);
+        $form->getInputFilter()->get('email')->getValidatorChain()->attach(new UniqueObject([
+            'object_repository' => $this->getRepository('User'),
+            'id' => $user->getId(),
+            'fields' => [
+                'email',
+            ],
+        ]));
+        $validationGroup = ['firstName', 'middleName', 'lastName', 'phone', 'additionalPhone', 'email'];
+        if ($request->getPost()->get('password')) {
+            array_push($validationGroup, 'password');
+        }
+        $form->setValidationGroup($validationGroup);
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
@@ -66,7 +82,7 @@ class TeachersController extends CoreController
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();
                 $this->addFlashMessages(['Teacher has been saved']);
-                return $this->redirect()->toRoute('admin_teacherrs_index', ['action' => 'index']);
+                return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
             }
         }
         return new ViewModel([

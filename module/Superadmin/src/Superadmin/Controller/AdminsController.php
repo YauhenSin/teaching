@@ -4,8 +4,10 @@ namespace Superadmin\Controller;
 
 use Core\Controller\CoreController;
 use Core\Entity\User;
+use DoctrineModule\Validator\NoObjectExists;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\View\Model\ViewModel;
+use Core\Validator\UniqueObject;
 
 class AdminsController extends CoreController
 {
@@ -24,6 +26,12 @@ class AdminsController extends CoreController
         $form->setValidationGroup([
             'firstName', 'lastName', 'email', 'password'
         ]);
+        $form->getInputFilter()->get('email')->getValidatorChain()->attach(new NoObjectExists([
+            'object_repository' => $this->getRepository('User'),
+            'fields' => [
+                'email',
+            ],
+        ]));
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
@@ -51,11 +59,20 @@ class AdminsController extends CoreController
         if (!$user) {
             return $this->redirect()->toRoute('superadmin_admins_index', ['action' => 'index']);
         }
-        $form = $this->createForm($user);
-        $form->setValidationGroup([
-            'firstName', 'lastName', 'email'
-        ]);
         $request = $this->getRequest();
+        $form = $this->createForm($user);
+        $form->getInputFilter()->get('email')->getValidatorChain()->attach(new UniqueObject([
+            'object_repository' => $this->getRepository('User'),
+            'id' => $user->getId(),
+            'fields' => [
+                'email',
+            ],
+        ]));
+        $validationGroup = ['firstName', 'lastName', 'email'];
+        if ($request->getPost()->get('password')) {
+            array_push($validationGroup, 'password');
+        }
+        $form->setValidationGroup($validationGroup);
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
