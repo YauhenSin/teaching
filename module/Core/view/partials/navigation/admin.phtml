@@ -5,7 +5,17 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo $this->url('admin_teachers_index', ['action' => 'index']); ?>"><?php echo $this->translate('Teachers'); ?></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $this->translate('Teachers'); ?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $this->url('admin_teachers_index', ['action' => 'index']); ?>"><?php echo $this->translate('List'); ?></a></li>
+                        <li class="divider" role="separator"></li>
+                        <li><a href="<?php echo $this->url('admin_teachers_index', ['action' => 'new']); ?>"><?php echo $this->translate('New'); ?></a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><?php echo $this->translate('Logout'); ?></a></li>

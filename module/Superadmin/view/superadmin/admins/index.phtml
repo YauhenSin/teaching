@@ -20,8 +20,8 @@ $administrators = $this->administrators;
                 <td><?php echo $administrator->getLastName(); ?></td>
                 <td><?php echo $administrator->getEmail(); ?></td>
                 <td>
-                    <a href="<?php echo $this->url('superadmin_admin_index', ['action' => 'edit', 'id' => $administrator->getId()]); ?>" class="btn btn-warning btn-xs"><?php echo $this->translate('Edit'); ?></a>
-                    <a href="<?php echo $this->url('superadmin_admin_index', ['action' => 'delete', 'id' => $administrator->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>
+                    <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'edit', 'id' => $administrator->getId()]); ?>" class="btn btn-warning btn-xs"><?php echo $this->translate('Edit'); ?></a>
+                    <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'delete', 'id' => $administrator->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>
                 </td>
             </tr>
         <?php endforeach; ?>

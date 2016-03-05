@@ -31,7 +31,10 @@ return [
                 ['route' => 'home', 'roles' => ['guest', 'student', 'teacher', 'admin', 'superadmin']],
 
                 ['route' => 'superadmin_index_index', 'roles' => ['superadmin']],
-                ['route' => 'superadmin_admin_index', 'roles' => ['superadmin']],
+                ['route' => 'superadmin_admins_index', 'roles' => ['superadmin']],
+
+                ['route' => 'admin_index_index', 'roles' => ['admin']],
+                ['route' => 'admin_teachers_index', 'roles' => ['admin']],
             ],
         ],
     ],

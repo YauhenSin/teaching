@@ -3,28 +3,28 @@
 return [
     'controllers' => [
         'invokables' => [
-            'Superadmin\Controller\IndexController' => 'Superadmin\Controller\IndexController',
-            'Superadmin\Controller\AdminsController' => 'Superadmin\Controller\AdminsController',
+            'Admin\Controller\IndexController' => 'Admin\Controller\IndexController',
+            'Admin\Controller\TeachersController' => 'Admin\Controller\TeachersController',
         ],
     ],
     'router' => [
         'routes' => [
-            'superadmin_index_index' => [
+            'admin_index_index' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/superadmin/index[/:action[/:id]]',
+                    'route' => '/admin/index[/:action[/:id]]',
                     'defaults' => [
-                        'controller' => 'Superadmin\Controller\IndexController',
+                        'controller' => 'Admin\Controller\IndexController',
                         'action' => 'index',
                     ],
                 ],
             ],
-            'superadmin_admins_index' => [
+            'admin_teachers_index' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/superadmin/admins[/:action[/:id]]',
+                    'route' => '/admin/teachers[/:action[/:id]]',
                     'defaults' => [
-                        'controller' => 'Superadmin\Controller\AdminsController',
+                        'controller' => 'Admin\Controller\TeachersController',
                         'action' => 'index',
                     ],
                 ],
