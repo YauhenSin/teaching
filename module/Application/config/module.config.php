@@ -55,7 +55,7 @@ return [
                 'options' => [
                     'route' => '/logout',
                     'defaults' => [
-                        'controller' => 'ScnSocialAuth-User',
+                        'controller' => 'zfcuser',
                         'action' => 'logout',
                     ],
                 ],

@@ -19,6 +19,7 @@ case "$1" in
         echo "[$1] Generating >>> "
         cd module/Application && $templatemapGeneratorPath && cd $folderUp2
         cd module/Core && $templatemapGeneratorPath && cd $folderUp2
+        cd module/Superadmin && $templatemapGeneratorPath && cd $folderUp2
         ;;
     *)
         echo $"Usage: $0 {generate-entities|validate-schema|update-schema|generate-templates|import:fixtures}"

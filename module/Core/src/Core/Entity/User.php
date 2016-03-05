@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use ZfcUser\Entity\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Form\Annotation as AT;
+use Core\Service\Entity\User as UserService;
 
 /**
  * @ORM\Entity(repositoryClass="Core\Repository\UserRepository")
@@ -424,5 +425,13 @@ class User implements UserInterface, ProviderInterface
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * @return \Core\Service\Entity\User
+     */
+    public function getService()
+    {
+        return new UserService($this);
     }
 }

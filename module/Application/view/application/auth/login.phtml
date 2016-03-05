@@ -1,16 +1,28 @@
+<?php
+$form = $this->loginForm;
+$form->prepare();
+?>
 <div class="row">
     <div class="col-md-offset-4 col-md-4">
-        <form class="form-horizontal">
+        <?php echo $this->form()->openTag($form); ?>
             <h2><?php echo $this->translate('Login to your account'); ?></h2>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Email">
+                <?php echo $this->formElement($form->get('identity')->setAttributes([
+                    'class' => 'form-control',
+                    'placeholder' => 'Email',
+                ])); ?>
+                <?php echo $this->formElementErrors()->render($form->get('identity')); ?>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Password">
+                <?php echo $this->formElement($form->get('credential')->setAttributes([
+                    'class' => 'form-control',
+                    'placeholder' => 'Password',
+                ])); ?>
+                <?php echo $this->formElementErrors()->render($form->get('credential')); ?>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default">Sign in</button>
             </div>
-        </form>
+        <?php echo $this->form()->closeTag(); ?>
     </div>
 </div>

@@ -85,19 +85,6 @@ class AuthController extends ZFCUserController
     public function loginAction()
     {
         $request = $this->getRequest();
-        if ($request->isGet()) {
-            $userId = $this->params()->fromQuery('id');
-            $activationCode = $this->params()->fromQuery('key');
-            $user = $this->getEntity('User', $userId);
-            if ($user && $user->getActivationCode() == $activationCode) {
-                $user->setState(1);
-                $this->getEm()->persist($user);
-                $this->getEm()->flush();
-            }
-        }
-        if ($request->isPost() && $request->getPost('remember')) {
-            $this->getEventManager()->trigger('set_remember_me');
-        }
         $result = parent::loginAction();
         if (!$request->isPost()) {
             return new ViewModel($result);

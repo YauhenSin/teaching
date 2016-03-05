@@ -155,7 +155,7 @@ $settings = [
      * Accepted values: A valid route name within your application
      *
      */
-    'login_redirect_route' => 'user_profile_index',
+    'login_redirect_route' => 'superadmin_admin_index',
 
     /**
      * Logout Redirect Route

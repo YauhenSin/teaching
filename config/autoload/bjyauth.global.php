@@ -24,10 +24,14 @@ return [
                 ['route' => 'zfcuser/register', 'roles' => ['guest']],
                 ['route' => 'zfcuser/login', 'roles' => ['guest']],
                 ['route' => 'zfcuser/authenticate', 'roles' => ['guest']],
-                ['route' => 'zfcuser/logout', 'roles' => ['guest', 'user', 'admin']],
+                ['route' => 'zfcuser/logout', 'roles' => ['student', 'teacher', 'admin', 'superadmin']],
                 ['route' => 'zfcuser/forgotpassword', 'roles' => ['guest']],
                 ['route' => 'zfcuser/resetpassword', 'roles' => ['guest']],
-                ['route' => 'zfcuser_success_register', 'roles' => ['guest']],
+
+                ['route' => 'home', 'roles' => ['guest', 'student', 'teacher', 'admin', 'superadmin']],
+
+                ['route' => 'superadmin_index_index', 'roles' => ['superadmin']],
+                ['route' => 'superadmin_admin_index', 'roles' => ['superadmin']],
             ],
         ],
     ],

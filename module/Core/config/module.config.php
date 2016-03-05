@@ -12,6 +12,11 @@ return [
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'navbar' => 'Core\View\Helper\Navbar',
+        ]
+    ],
     'doctrine' => [
         'driver' => [
             'teaching_annotation_driver' => [

@@ -8,10 +8,11 @@ return [
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-//        'BjyAuthorize',
+        'BjyAuthorize',
 
         'Application',
         'Core',
+        'Superadmin',
     ],
 
     // These are various options for the listeners attached to the ModuleManager
