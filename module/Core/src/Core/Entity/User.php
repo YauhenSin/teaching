@@ -106,7 +106,8 @@ class User implements UserInterface, ProviderInterface
      * @var Group
      * @ORM\ManyToOne(targetEntity="Core\Entity\Group", inversedBy="students")
      * @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=true)
-     * @AT\Exclude
+     * @AT\Type("DoctrineORMModule\Form\Element\EntitySelect")
+     * @AT\Options({"target_class":"Core\Entity\Group", "property":"title", "optgroup_identifier":"teacherName"})
      **/
     protected $group;
 
@@ -148,7 +149,10 @@ class User implements UserInterface, ProviderInterface
     /**
      * @var DateTime
      * @ORM\Column(name="date_of_birth", type="datetime", nullable=true)
-     * @AT\Exclude
+     * @AT\Type("Date")
+     * @AT\Options({"format":"Y-m-d"})
+     * @AT\Validator({"name":"Date", "options":{"format":"Y-m-d"}})
+     * @AT\Required(false)
      */
     protected $dateOfBirth;
 
@@ -164,6 +168,7 @@ class User implements UserInterface, ProviderInterface
      * @ORM\Column(name="education_price_note", type="string", length=255, nullable=true)
      * @AT\Filter({"name":"StringTrim", "name":"StripTags"})
      * @AT\Validator({"name":"StringLength", "options":{"max":"250"}})
+     * @AT\Required(false)
      */
     protected $educationPriceNote;
 

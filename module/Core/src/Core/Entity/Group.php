@@ -46,6 +46,8 @@ class Group
     /**
      * @var DateTime
      * @ORM\Column(name="date_start", type="datetime", nullable=true)
+     * @AT\Type("Date")
+     * @AT\Options({"format":"Y-m-d"})
      * @AT\Validator({"name":"Date", "options":{"format":"Y-m-d"}})
      * @AT\Required(false)
      */
@@ -292,5 +294,17 @@ class Group
     public function getWeekday()
     {
         return $this->weekday;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTeacherName()
+    {
+        $teacherName = '';
+        if ($this->getTeacher()) {
+            $teacherName = $this->getTeacher()->getService()->getFirstLastName();
+        }
+        return $teacherName;
     }
 }

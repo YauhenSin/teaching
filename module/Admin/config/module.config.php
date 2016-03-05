@@ -6,6 +6,7 @@ return [
             'Admin\Controller\IndexController' => 'Admin\Controller\IndexController',
             'Admin\Controller\TeachersController' => 'Admin\Controller\TeachersController',
             'Admin\Controller\GroupsController' => 'Admin\Controller\GroupsController',
+            'Admin\Controller\StudentsController' => 'Admin\Controller\StudentsController',
         ],
     ],
     'router' => [
@@ -36,6 +37,16 @@ return [
                     'route' => '/admin/groups[/:action[/:id]]',
                     'defaults' => [
                         'controller' => 'Admin\Controller\GroupsController',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
+            'admin_students_index' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/admin/students[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => 'Admin\Controller\StudentsController',
                         'action' => 'index',
                     ],
                 ],

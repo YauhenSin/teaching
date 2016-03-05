@@ -1,0 +1,92 @@
+<?php
+/** @var \Zend\Form\Form $form */
+$form = $this->form;
+$form->prepare();
+?>
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <?php echo $this->form()->openTag($form); ?>
+        <h2><?php echo $this->translate('Edit student'); ?></h2>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('firstName')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'First name',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('firstName')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('lastName')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Last name',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('lastName')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('dateOfBirth')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Date of birth',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('dateOfBirth')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('contactName')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Contact name',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('contactName')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('email')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Email',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('email')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('phone')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Phone',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('phone')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('additionalPhone')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Additional phone',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('additionalPhone')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('group')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Group',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('group')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('educationPrice')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Education price',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('educationPrice')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('educationPriceNote')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Education price note',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('educationPriceNote')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('password')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Password',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('password')); ?>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default"><?php echo $this->translate('Save'); ?></button>
+        </div>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

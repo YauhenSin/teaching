@@ -1,0 +1,37 @@
+<?php
+/** @var \Core\Entity\User [] $students*/
+$students = $this->students;
+?>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th><?php echo $this->translate('First name'); ?></th>
+            <th><?php echo $this->translate('Last name'); ?></th>
+            <th><?php echo $this->translate('Group'); ?></th>
+            <th><?php echo $this->translate('Email'); ?></th>
+            <th><?php echo $this->translate('contact name'); ?></th>
+            <th><?php echo $this->translate('Phone'); ?></th>
+            <th><?php echo $this->translate('Education price'); ?></th>
+            <th><?php echo $this->translate('Actions'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($students as $key => $student) : ?>
+            <tr>
+                <td scope="row"><?php echo $key + 1 ; ?></td>
+                <td><?php echo $student->getFirstName(); ?></td>
+                <td><?php echo $student->getLastName(); ?></td>
+                <td><?php echo $student->getGroup()->getTitle(); ?></td>
+                <td><?php echo $student->getEmail(); ?></td>
+                <td><?php echo $student->getContactName(); ?></td>
+                <td><?php echo $student->getPhone(); ?></td>
+                <td><?php echo $student->getEducationPrice(); ?></td>
+                <td>
+                    <a href="<?php echo $this->url('admin_students_index', ['action' => 'edit', 'id' => $student->getId()]); ?>" class="btn btn-warning btn-xs"><?php echo $this->translate('Edit'); ?></a>
+                    <a href="<?php echo $this->url('admin_students_index', ['action' => 'delete', 'id' => $student->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
