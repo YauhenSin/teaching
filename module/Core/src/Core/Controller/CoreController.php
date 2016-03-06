@@ -60,4 +60,14 @@ class CoreController extends AbstractActionController
         $translateViewHelperManager = $this->getServiceLocator()->get('ViewHelperManager')->get('translate');
         return $translateViewHelperManager($text);
     }
+
+    /**
+     * Get current user
+     *
+     * @return \Core\Entity\User
+     */
+    protected function getUser()
+    {
+        return $this->getServiceLocator()->get('zfcuserauthservice')->getIdentity();
+    }
 }

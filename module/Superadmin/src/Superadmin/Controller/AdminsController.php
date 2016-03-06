@@ -13,7 +13,7 @@ class AdminsController extends CoreController
 {
     public function indexAction()
     {
-        $administrators = $this->getRepository('User')->findByRole($this->getAdminRole());
+        $administrators = $this->getRepository('User')->findByRoleAndOwner($this->getAdminRole(), $this->getUser());
         return new ViewModel([
             'administrators' => $administrators,
         ]);
@@ -40,6 +40,7 @@ class AdminsController extends CoreController
                     ->addRole($this->getAdminRole())
                     ->setPassword($this->encryptPassword($form->get('password')->getValue()))
                     ->setState(1)
+                    ->setOwner($this->getUser())
                 ;
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();

@@ -13,7 +13,7 @@ class TeachersController extends CoreController
 {
     public function indexAction()
     {
-        $teachers = $this->getRepository('User')->findByRole($this->getTeacherRole());
+        $teachers = $this->getRepository('User')->findByRoleAndOwner($this->getTeacherRole(), $this->getUser());
         return new ViewModel([
             'teachers' => $teachers,
         ]);
@@ -39,6 +39,7 @@ class TeachersController extends CoreController
                     ->addRole($this->getTeacherRole())
                     ->setPassword($this->encryptPassword($form->get('password')->getValue()))
                     ->setState(1)
+                    ->setOwner($this->getUser())
                 ;
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();
@@ -54,7 +55,10 @@ class TeachersController extends CoreController
     public function editAction()
     {
         /** @var \Core\Entity\User $user */
-        $user = $this->getRepository('User')->findOneBy(['id' => $this->params()->fromRoute('id')]);
+        $user = $this->getRepository('User')->findOneBy([
+            'id' => $this->params()->fromRoute('id'),
+            'owner' => $this->getUser(),
+        ]);
         if (!$user) {
             return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
         }

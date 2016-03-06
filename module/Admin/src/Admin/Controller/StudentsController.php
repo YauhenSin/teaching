@@ -13,7 +13,7 @@ class StudentsController extends CoreController
 {
     public function indexAction()
     {
-        $students = $this->getRepository('User')->findByRole($this->getStudentRole());
+        $students = $this->getRepository('User')->findByRoleAndOwner($this->getStudentRole(), $this->getUser());
         return new ViewModel([
             'students' => $students,
         ]);
@@ -24,6 +24,17 @@ class StudentsController extends CoreController
         $request = $this->getRequest();
         $user = new User();
         $form = $this->createForm($user);
+        $form->get('group')->setOption(
+            'find_method',
+            [
+                'name' => 'findBy',
+                'params' => [
+                    'criteria' => [
+                        'owner' => $this->getUser(),
+                    ],
+                ],
+            ]
+        );
         $form->getInputFilter()->get('email')->getValidatorChain()->attach(new NoObjectExists([
             'object_repository' => $this->getRepository('User'),
             'fields' => [
@@ -42,6 +53,7 @@ class StudentsController extends CoreController
                     ->addRole($this->getStudentRole())
                     ->setPassword($this->encryptPassword($form->get('password')->getValue()))
                     ->setState(1)
+                    ->setOwner($this->getUser())
                 ;
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();
@@ -57,12 +69,26 @@ class StudentsController extends CoreController
     public function editAction()
     {
         /** @var \Core\Entity\User $user */
-        $user = $this->getRepository('User')->findOneBy(['id' => $this->params()->fromRoute('id')]);
+        $user = $this->getRepository('User')->findOneBy([
+            'id' => $this->params()->fromRoute('id'),
+            'owner' => $this->getUser(),
+        ]);
         if (!$user) {
             return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
         }
         $request = $this->getRequest();
         $form = $this->createForm($user);
+        $form->get('group')->setOption(
+            'find_method',
+            [
+                'name' => 'findBy',
+                'params' => [
+                    'criteria' => [
+                        'owner' => $this->getUser(),
+                    ],
+                ],
+            ]
+        );
         $form->getInputFilter()->get('email')->getValidatorChain()->attach(new UniqueObject([
             'object_repository' => $this->getRepository('User'),
             'id' => $user->getId(),

@@ -11,7 +11,7 @@ class GroupsController extends CoreController
 {
     public function indexAction()
     {
-        $groups = $this->getRepository('Group')->findAll();
+        $groups = $this->getRepository('Group')->findBy(['owner' => $this->getUser()]);
         return new ViewModel([
             'groups' => $groups,
         ]);
@@ -29,15 +29,17 @@ class GroupsController extends CoreController
         $form->get('teacher')->setOption(
             'find_method',
             [
-                'name' => 'findByRole',
+                'name' => 'findByRoleAndOwner',
                 'params' => [
                     'role' => $this->getTeacherRole(),
+                    'owner' => $this->getUser(),
                 ],
             ]
         );
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
+                $group->setOwner($this->getUser());
                 $this->getEm()->persist($group);
                 $this->getEm()->flush();
                 $this->addFlashMessages(['Group has been created']);
@@ -52,7 +54,10 @@ class GroupsController extends CoreController
     public function editAction()
     {
         /** @var \Core\Entity\Group $group */
-        $group = $this->getRepository('Group')->findOneBy(['id' => $this->params()->fromRoute('id')]);
+        $group = $this->getRepository('Group')->findOneBy([
+            'id' => $this->params()->fromRoute('id'),
+            'owner' => $this->getUser(),
+        ]);
         if (!$group) {
             return $this->redirect()->toRoute('admin_groups_index', ['action' => 'index']);
         }
@@ -65,9 +70,10 @@ class GroupsController extends CoreController
         $form->get('teacher')->setOption(
             'find_method',
             [
-                'name' => 'findByRole',
+                'name' => 'findByRoleAndOwner',
                 'params' => [
                     'role' => $this->getTeacherRole(),
+                    'owner' => $this->getUser(),
                 ],
             ]
         );

@@ -70,6 +70,14 @@ class Group
     protected $students;
 
     /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="Core\Entity\User")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=true)
+     * @AT\Exclude
+     */
+    protected $owner;
+
+    /**
      * @var DateTime
      * @ORM\Column(name="created_at", type="datetime")
      * @AT\Exclude
@@ -306,5 +314,29 @@ class Group
             $teacherName = $this->getTeacher()->getService()->getFirstLastName();
         }
         return $teacherName;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Core\Entity\User $owner
+     *
+     * @return Group
+     */
+    public function setOwner(\Core\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Core\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }

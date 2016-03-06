@@ -8,14 +8,17 @@ class UserRepository extends EntityRepository
 {
     /**
      * @param \Core\Entity\Role $role
+     * @param \Core\Entity\User $owner
      * @return array
      */
-    public function findByRole($role)
+    public function findByRoleAndOwner($role, $owner)
     {
         $queryBuilder = new QueryBuilder($this->getEntityManager());
         $queryBuilder
             ->select('user')
             ->from('\Core\Entity\User', 'user')
+            ->where('user.owner = :owner')
+            ->setParameter('owner', $owner)
         ;
         $queryBuilder->andWhere(
             $queryBuilder

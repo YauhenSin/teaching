@@ -173,6 +173,14 @@ class User implements UserInterface, ProviderInterface
     protected $educationPriceNote;
 
     /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="Core\Entity\User")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=true)
+     * @AT\Exclude
+     */
+    protected $owner;
+
+    /**
      * @var DateTime
      * @ORM\Column(name="created_at", type="datetime")
      * @AT\Exclude
@@ -694,6 +702,29 @@ class User implements UserInterface, ProviderInterface
     public function getEducationPriceNote()
     {
         return $this->educationPriceNote;
+    }
+    /**
+     * Set owner
+     *
+     * @param \Core\Entity\User $owner
+     *
+     * @return User
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Core\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 
     /**
