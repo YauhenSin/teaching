@@ -18,6 +18,10 @@ use Core\Service\Entity\User as UserService;
  */
 class User implements UserInterface, ProviderInterface
 {
+
+    const STATE_BLOCKED_BY_SUPERADMIN = 2;
+    const STATE_BLOCKED_BY_ADMIN = 3;
+    const STATE_BLOCKED_BY_TEACHER = 4;
     /**
      * @var int
      * @ORM\Id

@@ -27,6 +27,8 @@
     </head>
     <body>
         <?php echo $this->navbar()->render(); ?>
+        <?php echo $this->flashMessenger()->render('success', ['alert', 'alert-success', 'alert-dismissible', 'text-center']); ?>
+        <?php echo $this->flashMessenger()->render('error', ['alert', 'alert-danger', 'alert-dismissible', 'text-center']); ?>
         <div class="container">
             <?php echo $this->content; ?>
         </div>

@@ -10,6 +10,7 @@ use Application\Controller\AuthController;
 
 use Zend\Mvc\Application;
 use Zend\Mvc\Router\RouteInterface;
+use Zend\View\Helper\FlashMessenger;
 use ZfcUser\Options\ModuleOptions;
 
 class Module
@@ -58,6 +59,25 @@ class Module
                     );
                 }
             ]
+        ];
+    }
+
+    public function getViewHelperConfig()
+    {
+        return [
+            'factories' => [
+                'flashMessenger' => function () {
+                    $helper = new FlashMessenger();
+                    $helper
+                        ->setMessageOpenFormat(
+                            '<div %s role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                        )
+                        ->setMessageCloseString(
+                            '</div>'
+                        );
+                    return $helper;
+                }
+            ],
         ];
     }
 

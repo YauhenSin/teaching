@@ -91,6 +91,24 @@ class GroupsController extends CoreController
         ]);
     }
 
+    public function deleteAction()
+    {
+        /** @var \Core\Entity\Group $group */
+        $group = $this->getEntity('Group', $this->params()->fromRoute('id'));
+        if ($group && $group->getOwner() == $this->getUser()) {
+            try {
+                $this->getEm()->remove($group);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Group has been deleted']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Need to remove all related teachers, students etc.'], 'error');
+            }
+            return $this->redirect()->toRoute('admin_groups_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     /**
      * @return \Core\Entity\Role
      */

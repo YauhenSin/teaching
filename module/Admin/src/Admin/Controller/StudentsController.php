@@ -122,6 +122,24 @@ class StudentsController extends CoreController
         ]);
     }
 
+    public function deleteAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user && $user->getOwner() == $this->getUser()) {
+            try {
+                $this->getEm()->remove($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Student has been deleted']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Something wrong. Try again.'], 'error');
+            }
+            return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     /**
      * @param string $password
      * @return string

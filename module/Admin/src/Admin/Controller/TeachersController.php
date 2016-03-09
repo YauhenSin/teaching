@@ -94,6 +94,24 @@ class TeachersController extends CoreController
         ]);
     }
 
+    public function deleteAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user && $user->getOwner() == $this->getUser()) {
+            try {
+                $this->getEm()->remove($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Teacher has been deleted']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Need to remove all related groups, students etc.'], 'error');
+            }
+            return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     /**
      * @param string $password
      * @return string

@@ -92,6 +92,24 @@ class AdminsController extends CoreController
         ]);
     }
 
+    public function deleteAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user) {
+            try {
+                $this->getEm()->remove($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Admin has been deleted']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Need to remove all related teachers, students etc.'], 'error');
+            }
+            return $this->redirect()->toRoute('superadmin_admins_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     /**
      * @param string $password
      * @return string
