@@ -92,6 +92,65 @@ class AdminsController extends CoreController
         ]);
     }
 
+    public function blockAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user) {
+            try {
+                $user
+                    ->setState(User::STATE_BLOCKED_BY_SUPERADMIN)
+                    ->getService()->addStateToStack(User::STATE_BLOCKED_BY_SUPERADMIN);
+                /** @var \Core\Entity\User [] $relatedUsers */
+                $relatedUsers = $this->getRepository('User')->findBy(['owner' => $user]);
+                foreach ($relatedUsers as $relatedUser) {
+                    $relatedUser
+                        ->setState(User::STATE_IS_ADMIN_BLOCKED)
+                        ->getService()->addStateToStack(User::STATE_IS_ADMIN_BLOCKED);
+                    $this->getEm()->persist($relatedUser);
+                }
+                $this->getEm()->persist($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Admin has been blocked']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Something wrong. Try again.'], 'error');
+            }
+            return $this->redirect()->toRoute('superadmin_admins_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
+    public function activateAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user) {
+            try {
+                $user
+                    ->setState(User::STATE_ACTIVE)
+                    ->getService()->removeStateFromStack(User::STATE_BLOCKED_BY_SUPERADMIN);
+                /** @var \Core\Entity\User [] $relatedUsers */
+                $relatedUsers = $this->getRepository('User')->findBy(['owner' => $user]);
+                foreach ($relatedUsers as $relatedUser) {
+                    $relatedUser->getService()->removeStateFromStack(User::STATE_IS_ADMIN_BLOCKED);
+                    if (!$relatedUser->getStatesStack()) {
+                        $relatedUser->setState(User::STATE_ACTIVE);
+                    }
+                    $this->getEm()->persist($relatedUser);
+                }
+                $this->getEm()->persist($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Admin has been activated']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Something wrong. Try again.'], 'error');
+            }
+            return $this->redirect()->toRoute('superadmin_admins_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     public function deleteAction()
     {
         /** @var \Core\Entity\User $user */

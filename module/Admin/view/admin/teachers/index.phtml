@@ -10,6 +10,7 @@ $teachers = $this->teachers;
             <th><?php echo $this->translate('Last name'); ?></th>
             <th><?php echo $this->translate('Email'); ?></th>
             <th><?php echo $this->translate('Phone'); ?></th>
+            <th><?php echo $this->translate('Status'); ?></th>
             <th><?php echo $this->translate('Actions'); ?></th>
         </tr>
     </thead>
@@ -21,6 +22,13 @@ $teachers = $this->teachers;
                 <td><?php echo $teacher->getLastName(); ?></td>
                 <td><?php echo $teacher->getEmail(); ?></td>
                 <td><?php echo $teacher->getPhone(); ?></td>
+                <td>
+                    <?php if ($teacher->getState() == \Core\Entity\User::STATE_ACTIVE) : ?>
+                        <a href="<?php echo $this->url('admin_teachers_index', ['action' => 'block', 'id' => $teacher->getId()]); ?>" class="btn btn-success btn-xs"><?php echo $this->translate('Active'); ?></a>
+                    <?php else : ?>
+                        <a href="<?php echo $this->url('admin_teachers_index', ['action' => 'activate', 'id' => $teacher->getId()]); ?>" class="btn btn-info btn-xs"><?php echo $this->translate('Blocked'); ?></a>
+                    <?php endif; ?>
+                </td>
                 <td>
                     <a href="<?php echo $this->url('admin_teachers_index', ['action' => 'edit', 'id' => $teacher->getId()]); ?>" class="btn btn-warning btn-xs"><?php echo $this->translate('Edit'); ?></a>
                     <a href="<?php echo $this->url('admin_teachers_index', ['action' => 'delete', 'id' => $teacher->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>

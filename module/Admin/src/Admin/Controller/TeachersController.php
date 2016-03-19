@@ -94,6 +94,49 @@ class TeachersController extends CoreController
         ]);
     }
 
+    public function blockAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user && $user->getOwner() == $this->getUser()) {
+            try {
+                $user
+                    ->setState(User::STATE_BLOCKED_BY_ADMIN)
+                    ->getService()->addStateToStack(User::STATE_BLOCKED_BY_ADMIN);
+                $this->getEm()->persist($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Teacher has been blocked']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Something wrong. Try again.'], 'error');
+            }
+            return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
+    public function activateAction()
+    {
+        /** @var \Core\Entity\User $user */
+        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
+        if ($user && $user->getOwner() == $this->getUser()) {
+            try {
+                $user->getService()->removeStateFromStack(User::STATE_BLOCKED_BY_ADMIN);
+                if (!$user->getStatesStack()) {
+                    $user->setState(User::STATE_ACTIVE);
+                }
+                $this->getEm()->persist($user);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Teacher has been activated']);
+            } catch(\Exception $exception) {
+                $this->addFlashMessages(['Something wrong. Try again.'], 'error');
+            }
+            return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
+        }
+        return new ViewModel([
+        ]);
+    }
+
     public function deleteAction()
     {
         /** @var \Core\Entity\User $user */

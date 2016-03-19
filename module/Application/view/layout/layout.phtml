@@ -23,7 +23,6 @@
             ->prependFile($this->basePath('module/core/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath('module/core/js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
         ; ?>
-
     </head>
     <body>
         <?php echo $this->navbar()->render(); ?>

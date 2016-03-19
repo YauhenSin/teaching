@@ -19,9 +19,12 @@ use Core\Service\Entity\User as UserService;
 class User implements UserInterface, ProviderInterface
 {
 
+    const STATE_ACTIVE = 1;
     const STATE_BLOCKED_BY_SUPERADMIN = 2;
-    const STATE_BLOCKED_BY_ADMIN = 3;
-    const STATE_BLOCKED_BY_TEACHER = 4;
+    const STATE_IS_ADMIN_BLOCKED = 3;
+    const STATE_BLOCKED_BY_ADMIN = 4;
+    const STATE_BLOCKED_BY_TEACHER = 5;
+    const STATE_IS_GROUP_BLOCKED = 5;
     /**
      * @var int
      * @ORM\Id
@@ -88,6 +91,13 @@ class User implements UserInterface, ProviderInterface
      * @AT\Exclude
      */
     protected $state;
+
+    /**
+     * @var array
+     * @ORM\Column(name="statesStack", type="simple_array", nullable=true)
+     * @AT\Exclude
+     */
+    protected $statesStack;
 
     /**
      * @var string
@@ -354,6 +364,30 @@ class User implements UserInterface, ProviderInterface
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Set statesStack
+     *
+     * @param array $statesStack
+     *
+     * @return User
+     */
+    public function setStatesStack($statesStack)
+    {
+        $this->statesStack = $statesStack;
+
+        return $this;
+    }
+
+    /**
+     * Get statesStack
+     *
+     * @return array
+     */
+    public function getStatesStack()
+    {
+        return $this->statesStack;
     }
 
     /**

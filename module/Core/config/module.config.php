@@ -47,6 +47,7 @@ return [
         ],
     ],
     'translator' => [
+        'locale' => 'ru',
         'translation_file_patterns' => [
             [
                 'type'     => 'phparray',

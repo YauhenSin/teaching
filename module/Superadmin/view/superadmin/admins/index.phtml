@@ -9,6 +9,7 @@ $administrators = $this->administrators;
             <th><?php echo $this->translate('First name'); ?></th>
             <th><?php echo $this->translate('Last name'); ?></th>
             <th><?php echo $this->translate('Email'); ?></th>
+            <th><?php echo $this->translate('Status'); ?></th>
             <th><?php echo $this->translate('Actions'); ?></th>
         </tr>
     </thead>
@@ -19,6 +20,13 @@ $administrators = $this->administrators;
                 <td><?php echo $administrator->getFirstName(); ?></td>
                 <td><?php echo $administrator->getLastName(); ?></td>
                 <td><?php echo $administrator->getEmail(); ?></td>
+                <td>
+                    <?php if ($administrator->getState() == \Core\Entity\User::STATE_ACTIVE) : ?>
+                        <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'block', 'id' => $administrator->getId()]); ?>" class="btn btn-success btn-xs"><?php echo $this->translate('Active'); ?></a>
+                    <?php else : ?>
+                        <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'activate', 'id' => $administrator->getId()]); ?>" class="btn btn-info btn-xs"><?php echo $this->translate('Blocked'); ?></a>
+                    <?php endif; ?>
+                </td>
                 <td>
                     <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'edit', 'id' => $administrator->getId()]); ?>" class="btn btn-warning btn-xs"><?php echo $this->translate('Edit'); ?></a>
                     <a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'delete', 'id' => $administrator->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>

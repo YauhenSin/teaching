@@ -29,4 +29,38 @@ class User extends AbstractEntityService
         $user = $this->getUser();
         return $user->getFirstName() . ' ' . $user->getLastName();
     }
+
+    /**
+     * @param int $state
+     * @return bool
+     */
+    public function addStateToStack($state)
+    {
+        $user = $this->getUser();
+        $statesStack = $user->getStatesStack();
+        if (!in_array($state, $statesStack)) {
+            array_push($statesStack, $state);
+            $user->setStatesStack($statesStack);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param int $state
+     * @return bool
+     */
+    public function removeStateFromStack($state)
+    {
+        $user = $this->getUser();
+        $statesStack = $user->getStatesStack();
+        if (in_array($state, $statesStack)) {
+            $itemIndex = array_search($state, $statesStack);
+            unset($statesStack[$itemIndex]);
+            $user->setStatesStack($statesStack);
+            return true;
+        }
+        return false;
+    }
+
 }

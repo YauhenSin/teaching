@@ -21,7 +21,7 @@ $form->prepare();
                 <?php echo $this->formElementErrors()->render($form->get('credential')); ?>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button type="submit" class="btn btn-default"><?php echo $this->translate('Sign in'); ?></button>
             </div>
         <?php echo $this->form()->closeTag(); ?>
     </div>
