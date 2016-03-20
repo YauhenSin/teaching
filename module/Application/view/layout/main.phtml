@@ -1,0 +1,1211 @@
+<!DOCTYPE HTML>
+<html lang="ru-RU" dir="ltr"  data-config='{"twitter":0,"plusone":0,"facebook":0,"style":"default","menu_hover":0}'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Домашная страница &raquo; Tinker Thinkers</title>
+    <link rel="shortcut icon" href="/wp-content/themes/veltheme/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="/wp-content/themes/veltheme/apple_touch_icon.png">
+    <script type="text/javascript">
+        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/tinkerthinkers.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+        !function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <!--[if IE  8]><link rel="stylesheet" type="text/css" href="/module/application/css/vc-ie8.css" media="screen"><![endif]-->
+    <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1453045037760{margin-bottom: 0px !important;padding-top: 40px !important;padding-bottom: 40px !important;}.vc_custom_1453078254286{margin-bottom: 0px !important;}.vc_custom_1453063328234{margin-bottom: 0px !important;}.vc_custom_1453074213898{margin-bottom: 0px !important;}.vc_custom_1453075289156{margin-bottom: 0px !important;}.vc_custom_1453086063137{margin-bottom: 0px !important;}.vc_custom_1453524758873{margin-bottom: 0px !important;}.vc_custom_1453077467691{margin-bottom: 0px !important;}.vc_custom_1453077567872{margin-bottom: 0px !important;}.vc_custom_1453000369257{margin-bottom: 0px !important;}.vc_custom_1453077554124{margin-bottom: 0px !important;}.vc_custom_1453415259674{margin-bottom: 0px !important;}.vc_custom_1453000369257{margin-bottom: 0px !important;}.vc_custom_1453077985583{margin-bottom: 0px !important;}.vc_custom_1453417637382{margin-bottom: 0px !important;}.vc_custom_1453000369257{margin-bottom: 0px !important;}.vc_custom_1453589686136{margin-bottom: 0px !important;}.vc_custom_1453074167301{margin-bottom: 15px !important;}.vc_custom_1453085978481{margin-bottom: 10px !important;}.vc_custom_1453085985613{margin-bottom: 10px !important;}.vc_custom_1453093344018{margin-bottom: 15px !important;}</style>
+    <noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
+
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/module/core/img/favicon.ico'))
+
+        ->prependStylesheet($this->basePath('module/application/css/admin_icon.min.css'), 'all', false, ['id' => 'vc_extensions_cqbundle_adminicon-css'])
+        ->prependStylesheet($this->basePath('module/application/css/styles.css'), 'all', false, ['id' => 'contact-form-7-css'])
+        ->prependStylesheet($this->basePath('module/application/css/js_composer.css'), 'all', false, ['id' => 'js_composer_front-css'])
+
+
+
+
+        ->prependStylesheet($this->basePath('module/application/css/theme.css'))
+        ->prependStylesheet($this->basePath('module/application/css/custom.css'))
+    ; ?>
+
+    <?php echo $this->headScript()
+//        ->prependFile($this->basePath('module/application/js/theme.js'))
+        ->prependFile($this->basePath('module/application/js/uikit/components/tooltip.js'))
+        ->prependFile($this->basePath('module/application/js/uikit/components/search.js'))
+        ->prependFile($this->basePath('module/application/js/uikit/components/autocomplete.js'))
+        ->prependFile($this->basePath('module/application/js/uikit/uikit.js'))
+        ->prependFile($this->basePath('module/application/js/jquery-migrate.min.js?ver=1.2.1'))
+        ->prependFile($this->basePath('module/application/js/jquery.js?ver=1.11.3'))
+    ; ?>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="page page-id-175 page-template-default tm-isblog wp-page wp-page-175 wpb-js-composer js-comp-ver-4.7.4 vc_responsive">
+<div class="tm-main tm-block tm-block-default">
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+            <div class="tm-main uk-width-medium-1-1">
+                <main class="tm-content">
+                    <article class="uk-article">
+                        <h1 class="uk-article-title">Домашная страница</h1>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid bg_header vc_custom_1453045037760">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid head_block">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><a href="/" rel="attachment wp-att-7"><img class="alignnone size-full wp-image-7" src="module/application/img/logo.png" alt="logo" width="180" height="110" /></a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  language">
+                                                    <div class="wpb_wrapper">
+                                                        <p><a href="http://platform.ama-kids.com/">Тренировка онлайн</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_top-to-bottom tizer_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p>
+                                                            <span class="text1">Революция в образовании!</span><br />
+                                                            <span class="text2">Уникальное развитие способностей для детей от 4 до 16 лет</span><br />
+                                                            <span class="text3">Гарантия улучшения успеваемости 100%</span>
+                                                        </p>
+                                                        <p>
+                                                            <span class="text4">Хотите увидеть результат уже через 30 минут?</span><br />
+                                                            <span class="text5">Пройдите первое занятие <strong>БЕСПЛАТНО!</strong></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="submit_button">
+                                                            <label class="btn submit_free" for="modal-3">Записаться на бесплатное занятие</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element wpb_animate_when_almost_visible wpb_appear title_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p style="text-align: center;"><strong>Звоните нам: 844 244 4300</strong></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid about_block vc_custom_1453078254286">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3><strong>Ментальная<br />
+                                                    математика</strong><br />
+                                                Феномен методики</h3>
+                                        </div>
+                                    </div>
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top text">
+                                        <div class="wpb_wrapper">
+                                            <p><strong>Ментальная математика</strong> – уникальная образовательная система, позволяющая невероятно быстро развить умственные и интеллектуальные способности.</p>
+                                            <p>Программа базируется на арифметических вычислениях на счетах абакус.</p>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignnone size-full wp-image-36" src="/module/application/img/soroban.png" alt="soroban" width="610" height="224" srcset="/module/application/img/soroban-300x110.png 300w, /module/application/img/soroban.png 610w" sizes="(max-width: 610px) 100vw, 610px" /></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left soroban">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>Абакус</strong> — японские счёты, которые берут начало из Средних веков и не теряют свой актуальности по сей день. Во всём мире сорбан используется, как эффективный инструмент обучения счёту, которым уступает методика счёта на калькуляторе и на бумаге.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid stat_say_block">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Что говорят цифры?</h3>
+
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>5</strong><br />
+                                                            миллионов студентов по всему миру уже изучают ментальную матемитику</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>57</strong><br />
+                                                            стран мира обучаются по данной методике</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>200</strong><br />
+                                                            действующих центров обучения в США</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>5000</strong><br />
+                                                            центров обучения в мире. Их число постоянно растёт!</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div class="vc_row wpb_row vc_row-fluid brain_block">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>А Вы знаете, сколько человек используют свой мозг на полную?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear butttons_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><label class="btn yes" for="modal-1">Да, знаю!</label> <label class="btn no" for="modal-2">Нет. Сколько?</label></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right brain_side">
+                                                    <div class="wpb_wrapper">
+                                                        <h4>Левое полушарие</h4>
+                                                        <ul>
+                                                            <li>Развитая логика</li>
+                                                            <li>Высоко развитый показатель IQ</li>
+                                                            <li>Фокусировка и концентрация</li>
+                                                            <li>Быстрая реакция</li>
+                                                            <li>Мощная память</li>
+                                                            <li>Навыки наблюдения</li>
+                                                            <li>Пошаговая обработка информации</li>
+                                                            <li>Буквальное восприятие информации</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignnone size-full wp-image-19" src="/module/application/img/brain.png" alt="brain" width="470" height="520" srcset="/module/application/img/brain-271x300.png 271w, /module/application/img/brain.png 470w" sizes="(max-width: 470px) 100vw, 470px" /></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left brain_side">
+                                                    <div class="wpb_wrapper">
+                                                        <h4>Правое полушарие</h4>
+                                                        <ul>
+                                                            <li>Творческий потенциал</li>
+                                                            <li>Развитие интуиции</li>
+                                                            <li>Многозадачность, параллельная обработка информации</li>
+                                                            <li>Воображение и креативное мышление</li>
+                                                            <li>Восприятие образов и символов</li>
+                                                            <li>Уверенность в себе</li>
+                                                            <li>Самостоятельность</li>
+                                                            <li>Воспрятие цвета, ритма, музыки</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <p>Звоните нам: <strong>844 244 4300</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid video_block vc_custom_1453063328234">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Убедитесь сами</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><iframe src="https://youtube.com/embed/Kkpl2Wm4TYI" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top butttons_block_video">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>Вау&#8230; Впечатляет, правда?</strong></p>
+                                                        <p><label class="btn submit_free" style="background: #FFFFFF; box-shadow: 0 -4px #e4e4e4 inset; color: #c00e6a;" for="modal-3">Пройти первый урок бесплатно</label></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid problems_block vc_custom_1453074213898">
+                            <div class="wpb_column vc_column_container vc_col-sm-3">
+                                <div class="wpb_wrapper"></div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-9">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>А Вам это знакомо?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1453074167301">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_1.png" alt="" /><br />
+                                                            Ваш ребёнок приносит плохие оценки, ему сложно считать и писать</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_2.png" alt="" /><br />
+                                                            Трудности изучения языков, запоминания текстов и стихотворений</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_3.png" alt="" /><br />
+                                                            Проблемы коммуникации, замкнутость, неуверенности</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_4.png" alt="" /><br />
+                                                            Вялость, отсутствие мотивации и энергии</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_5.png" alt="" /><br />
+                                                            Плохо развитая логика и творческое начало</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/p_6.png" alt="" /><br />
+                                                            Рассеянность, невнимательность</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid form_line_block vc_custom_1453075289156">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Хотите решить все эти проблемы?</h3>
+                                            <p>Первый результат уже через 30 минут!</p>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div role="form" class="wpcf7" id="wpcf7-f27-p175-o1" lang="ru-RU" dir="ltr">
+                                                            <div class="screen-reader-response"></div>
+                                                            <form action="/rus/#wpcf7-f27-p175-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                                <div style="display: none;">
+                                                                    <input type="hidden" name="_wpcf7" value="27" />
+                                                                    <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                                                                    <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f27-p175-o1" />
+                                                                    <input type="hidden" name="_wpnonce" value="dd16c4f055" />
+                                                                </div>
+                                                                <p>
+                                                                    <span class="wpcf7-form-control-wrap your-name">
+                                                                        <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" />
+                                                                    </span>
+                                                                    <span class="wpcf7-form-control-wrap your-email">
+                                                                        <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span> <span class="wpcf7-form-control-wrap text-719">
+                                                                        <input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" />
+                                                                    </span>
+                                                                    <input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                                                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid ten_reasons_block vc_custom_1453086063137">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Мы выявили целых<br />
+                                                <strong>10</strong> причин<br />
+                                                заняться ментальной математикой</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r1.png" alt="" /><br />
+                                                            Вы можете заниматься раз в неделю в группе и каждый день дома, используя удобную онлайн-программу</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r2.png" alt="" /><br />
+                                                            Уже после первого занятия Вы видите результат. Ваш ребёнок прогрессирует в учёбе с каждым новым занятием</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r3.png" alt="" /><br />
+                                                            Программа разрабатывается индивидуально согласно особенностям ребёнка</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r4.png" alt="" /><br />
+                                                            Вы получаете все необходимые учебные материалы и консультации лучших специалистов</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r10.png" alt="" /><br />
+                                                            Ребёнок всесторонне развивается</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  ten_reasons_img">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignnone size-full wp-image-30" src="module/application/img/144.jpg" alt="144" width="900" height="450" srcset="module/application/img/144-300x150.jpg 300w, module/application/img/144-768x384.jpg 768w, module/application/img/144.jpg 900w" sizes="(max-width: 900px) 100vw, 900px" /></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r5.png" alt="" /><br />
+                                                            В группах занимаются не больше 10 детей, дети получают достаточно внимания</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r9.png" alt="" /><br />
+                                                            Ребёнок легко коммуницирует</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r6.png" alt="" /><br />
+                                                            Три группы: младшая 4-6 лет, средння 7-11 лет, старшая 12-16 лет</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r7.png" alt="" /><br />
+                                                            Вы делаете вклад в успешное будущее Вашего ребёнка</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_bottom-to-top">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/r8.png" alt="" /><br />
+                                                            У нас работают лучшие специалисты: педагоги и психологи</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid stat_say_block2 vc_custom_1453524758873">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Чего ещё Вы не знали об абакус?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>4-16</strong><br />
+                                                            лет. Возраст эффективного обучения</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>30</strong><br />
+                                                            минут для получения первых результатов</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>100%</strong><br />
+                                                            вероятность улучшения успеваемости</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-3">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right statistic_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>10</strong><br />
+                                                            человек &#8212; максимальное количество детей в группе</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid form_line_block vc_custom_1453077467691">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Пройти пробный урок бесплатно</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div role="form" class="wpcf7" id="wpcf7-f27-p175-o2" lang="ru-RU" dir="ltr">
+                                                            <div class="screen-reader-response"></div>
+                                                            <form action="/rus/#wpcf7-f27-p175-o2" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                                <div style="display: none;">
+                                                                    <input type="hidden" name="_wpcf7" value="27" />
+                                                                    <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                                                                    <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f27-p175-o2" />
+                                                                    <input type="hidden" name="_wpnonce" value="dd16c4f055" />
+                                                                </div>
+                                                                <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" /></span> <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span> <span class="wpcf7-form-control-wrap text-719"><input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" /></span> <input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                                                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                                    <div class="wpb_wrapper">
+                                                        <h3>Или просто позвоните нам</h3>
+                                                        <h2>844 244 4300</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid testimonials_block vc_custom_1453077567872">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Что говорят счастливые родители?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignleft size-full wp-image-96" src="/module/application/img/demo_t1.jpg" alt="demo_t1" width="200" height="200" srcset="/module/application/img/demo_t1-150x150.jpg 150w, /module/application/img/demo_t1.jpg 200w" sizes="(max-width: 200px) 100vw, 200px" />Занимаемся ментальной арифметикой с сентября. Помимо умения быстро считать, память возросла в разы. Стихи раньше &#171;не учились&#187;. Сейчас учим за день. Занятия каждую субботу ждем с нетерпением. Ребенку очень нравится.</p>
+                                                        <h5>Марина Иванова</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignleft size-full wp-image-97" src="/module/application/img/demo_t2.jpg" alt="demo_t2" width="200" height="200" srcset="/module/application/img/demo_t2-150x150.jpg 150w, /module/application/img/demo_t2.jpg 200w" sizes="(max-width: 200px) 100vw, 200px" /> Ваня занимается с сентября. Учится с удовольствием. Благодаря занятиям ментальной арифметикой научился лучше считать, стал собраннее, сообразительнее, стал легче и быстрее делать школьные домашние задания.</p>
+                                                        <h5>Татьяна Петрова</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  vc_custom_1453085978481 iframe_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><iframe src="https://www.youtube.com/embed/AnCmAVVY5PE" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  iframe_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><iframe src="https://www.youtube.com/embed/d_YTcJ_nWtA" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  vc_custom_1453085985613 iframe_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><iframe src="https://www.youtube.com/embed/d_YTcJ_nWtA" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  iframe_block">
+                                                    <div class="wpb_wrapper">
+                                                        <p><iframe src="https://www.youtube.com/embed/AnCmAVVY5PE" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-6">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignleft size-full wp-image-98" src="/module/application/img/demo_t3.jpg" alt="demo_t3" width="200" height="200" srcset="/module/application/img/demo_t3-150x150.jpg 150w, /module/application/img/demo_t3.jpg 200w" sizes="(max-width: 200px) 100vw, 200px" />За это время, мы наблюдаем у нее значительные успехи: она стала более внимательной и собранной, легче запоминает и усваивает большое количество информации, с легкостью учит стихотворения и тексты.</p>
+                                                        <h5>Иван Сидоров</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element ">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img class="alignleft size-full wp-image-99" src="/module/application/img/demo_t4.jpg" alt="demo_t4" width="200" height="200" srcset="/module/application/img/demo_t4-150x150.jpg 150w, /module/application/img/demo_t4.jpg 200w" sizes="(max-width: 200px) 100vw, 200px" />Центр ментальной арифметики, в который мы ходим уже пол года нам очень нравится! Мой сын начал заниматься ментальной арифметикой, когда ему было 3,8 года. За эти 6 месяцев он заметно изменился в плане умственного развития.</p>
+                                                        <h5>Наталья Кручинина</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid form_line_block vc_custom_1453000369257">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Хотите таких же результатов?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div role="form" class="wpcf7" id="wpcf7-f27-p175-o3" lang="ru-RU" dir="ltr">
+                                                            <div class="screen-reader-response"></div>
+                                                            <form action="/rus/#wpcf7-f27-p175-o3" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                                <div style="display: none;">
+                                                                    <input type="hidden" name="_wpcf7" value="27" />
+                                                                    <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                                                                    <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f27-p175-o3" />
+                                                                    <input type="hidden" name="_wpnonce" value="dd16c4f055" />
+                                                                </div>
+                                                                <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" /></span> <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span> <span class="wpcf7-form-control-wrap text-719"><input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" /></span> <input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                                                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid ask_block vc_custom_1453077554124">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Нас часто спрашивают</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  accordion_block">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="su-accordion"><br />
+                                                            <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Чем ментальная математика отличается от обычных программ дошкольного развития?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Уникальность методики — в гармоничном развитии обоих полушарий мозга. В обычных программах основной упор идет на левое полушарие, которое у 95% и так опережает правое. Развивая оба полушария, ребенок становится уверенней в себе, сконцентрированным, внимательным к деталям, с легкостью изучает иностранные языки и успешно реализовывает себя в учебе и в дальнейшей работе. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>С какого возраста можно заниматься?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Обучение ментальной арифметике можно начинать с 4 лет. Необходимо, чтобы ребенок умел считать до 10 и пришел на первый пробный урок-тестирование. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Улучшатся ли результаты в школе?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Основная цель ментальной математики – гармоничное развитие мозга вашего ребенка, а не система обучения счета. Уже через 2-3 месяца обучения в Академии Tinker Thinkers, вы заметите успехи в учебе по математике, иностранным языкам и другим предметам. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Как проходят занятия?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Чтобы занятия проходили в удовольствие, дети занимаются не только вычислениями. Они участвуют в развивающих играх. Выполняют упражнения на развитие памяти, внимания, воображения и даже для глаз и осанки. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Сколько времени нужно заниматься?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Программа разработана с учетом развития вашего ребенка. Каждый ребенок осваивает программу со своей скоростью, но в среднем полный курс дети осваивают за 2-2,5 года. Занятия проходят в классе 1 раз в неделю – по 2 урока. В течение недели необходимо уделять минимум 20 минут в день для выполнения домашнего задания. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Сколько человек в группе?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Чтобы уделить каждому нужное время и проработать урок, в нашей школе устного счета инструктор работает в группах до 10 человек. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Можно ли заниматься дома?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Можно и нужно! Каждый студент получает доступ к уникальному компьютерному тренажеру, где он может тренироваться и закрепить изученный материал. </div></div> <div class="su-spoiler su-spoiler-style-fancy su-spoiler-icon-plus su-spoiler-closed"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Могут ли заниматься взрослые?</div><div class="su-spoiler-content su-clearfix" style="display:none"> Да, Вы можете заниматься со своими детьми дома. В Азии и Америке эту методику используют для профилактики болезни Альцгеймера, старческого слабоумия. Ментальная математика – гимнастика для ваших мозгов. Вы же хотите жить дольше и счастливей? </div></div><br />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid benefits_block vc_custom_1453415259674">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3><strong>6</strong> способностей<br />
+                                                которые развиваются с помощью<br />
+                                                Ментальной Математики</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/16.png" alt="" /><br />
+                                                            Способность концентрироваться</p>
+                                                    </div>
+                                                </div>
+                                            </div></div><div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/26.png" alt="" /><br />
+                                                            Способность к воображению и визуализации</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/36.png" alt="" /><br />
+                                                            Способность запоминать</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4"><div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/46.png" alt="" /><br />
+                                                            Способность внимательно наблюдать</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/56.png" alt="" /><br />
+                                                            Споcобность обрабатывать информацию</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><img src="/module/application/img/66.png" alt="" /><br />
+                                                            Способность быстро слушать и читать</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid form_line_block vc_custom_1453000369257">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Узнайте <strong style="font-family: intro; color: #fff; padding: 0;">7</strong>-ю причину прямо сейчас!</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div role="form" class="wpcf7" id="wpcf7-f27-p175-o4" lang="ru-RU" dir="ltr">
+                                                            <div class="screen-reader-response"></div>
+                                                            <form action="/rus/#wpcf7-f27-p175-o4" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                                <div style="display: none;">
+                                                                    <input type="hidden" name="_wpcf7" value="27" />
+                                                                    <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                                                                    <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f27-p175-o4" />
+                                                                    <input type="hidden" name="_wpnonce" value="dd16c4f055" />
+                                                                </div>
+                                                                <p><span class="wpcf7-form-control-wrap your-name">
+                                                                        <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" />
+                                                                    </span>
+                                                                    <span class="wpcf7-form-control-wrap your-email">
+                                                                        <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span>
+                                                                    <span class="wpcf7-form-control-wrap text-719">
+                                                                        <input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" />
+                                                                    </span>
+                                                                    <input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" />
+                                                                </p>
+                                                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid methods_block vc_custom_1453417637382">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Преимущества методики</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-sort-numeric-asc"></i> Помогает развивать интуитивное понимание чисел через их визуализацию</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-gears"></i> Помогает в развитии таких полезных качеств как концентрация, терпение и выносливость</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-bar-chart"></i> Развивает в ребенке чувство уверенности в своих возможностях</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_left-to-right">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-flash"></i> Позволяет мгновенно выполненять математические расчеты</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear happy_boy">
+                                                    <div class="wpb_wrapper">
+                                                        <p><strong>Когда ребёнок развивается,<br />
+                                                                он становится счастливее!</strong><br />
+                                                            <img src="/module/application/img/children.png" alt="" /></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-4">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-puzzle-piece"></i> Улучшает понимание составных чисел</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-graduation-cap"></i> Развивает способности умственного вычисления</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-exchange"></i> Активирует и развивает связи между правым и левым полушариями мозга</p>
+                                                    </div>
+                                                </div>
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_right-to-left">
+                                                    <div class="wpb_wrapper">
+                                                        <p><i class="uk-icon-gears"></i> Приводит к большей умственной работоспособности</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid form_line_block vc_custom_1453000369257">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear title_block">
+                                        <div class="wpb_wrapper">
+                                            <h3>Свяжитесь с Вашим персональным консультантом</h3>
+                                        </div>
+                                    </div>
+                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  wpb_animate_when_almost_visible wpb_appear">
+                                                    <div class="wpb_wrapper">
+                                                        <div role="form" class="wpcf7" id="wpcf7-f27-p175-o5" lang="ru-RU" dir="ltr">
+                                                            <div class="screen-reader-response"></div>
+                                                            <form action="/rus/#wpcf7-f27-p175-o5" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                                <div style="display: none;">
+                                                                    <input type="hidden" name="_wpcf7" value="27" />
+                                                                    <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                                                                    <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f27-p175-o5" />
+                                                                    <input type="hidden" name="_wpnonce" value="dd16c4f055" />
+                                                                </div>
+                                                                <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" /></span> <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span> <span class="wpcf7-form-control-wrap text-719"><input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" /></span> <input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                                                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                        <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid footer_block vc_custom_1453589686136">
+                            <div class="wpb_column vc_column_container vc_col-sm-4">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element ">
+                                        <div class="wpb_wrapper">
+                                            <p>© 2016 – Tinker Thinkers.<br />
+                                                Все права защищены</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-4">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element  footer_contact">
+                                        <div class="wpb_wrapper">
+                                            <p>Звоните нам: <strong>844 244 4300</strong><br />
+                                                Email: <a href="mailto:info@tinkerthinkers.com">info@tinkerthinkers.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-4">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                                        <div class="wpb_wrapper">
+                                            <script type="text/javascript">(function() {
+                                                    if (window.pluso)if (typeof window.pluso.start == "function") return;
+                                                    if (window.ifpluso==undefined) { window.ifpluso = 1;
+                                                        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                                                        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                                        s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                                                        var h=d[g]('body')[0];
+                                                        h.appendChild(s);
+                                                    }})();</script>
+                                            <div class="pluso" data-background="transparent" data-options="medium,round,line,horizontal,nocounter,theme=04" data-services="facebook,twitter,vkontakte,google"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_row-full-width"></div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tm-block-footer">
+    <div class="uk-container uk-container-center">
+        <footer class="tm-footer tm-link-muted">
+            <a id="tm-anchor-bottom" class="tm-totop-scroller" data-uk-smooth-scroll href="#"></a>
+        </footer>
+    </div>
+</div>
+<link rel='stylesheet' id='font-awesome-css'  href='/module/application/css/font-awesome.min.css?ver=4.7.4' type='text/css' media='screen' />
+<link rel='stylesheet' id='su-box-shortcodes-css'  href='/module/application/css/box-shortcodes.css?ver=4.9.9' type='text/css' media='all' />
+<script type='text/javascript' src='/module/application/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript' src='/module/application/js/scripts.js?ver=4.3.1'></script>
+<script type='text/javascript' src='/module/application/js/wp-embed.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='/module/application/js/js_composer_front.js?ver=4.7.4'></script>
+<script type='text/javascript' src='/module/application/js/waypoints.min.js?ver=4.7.4'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var su_other_shortcodes = {"no_preview":"\u042d\u0442\u043e\u0442 \u0448\u043e\u0440\u0442\u043a\u043e\u0434 \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u043f\u0440\u0435\u0434\u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0430. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430 \u0432\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0448\u043e\u0440\u0442\u043a\u043e\u0434 \u0432 \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440 \u0438 \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0438\u0442\u0435 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435 \u0437\u0430\u043f\u0438\u0441\u0438."};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='/module/application/js/other-shortcodes.js?ver=4.9.9'></script>
+
+<!-- Модальное окно 1 -->
+<div class="modal">
+    <input class="modal-open" id="modal-1" type="checkbox" hidden>
+    <div class="modal-wrap" aria-hidden="true" role="dialog">
+        <label class="modal-overlay" for="modal-1"></label><div class="modal-dialog"><div class="modal-header">
+                <h5>Расскажите нам!</h5><label class="btn-close" for="modal-1" aria-hidden="true">×</label></div><div class="modal-body">
+                <div role="form" class="wpcf7" id="wpcf7-f199-o6" lang="ru-RU" dir="ltr">
+                    <div class="screen-reader-response"></div>
+                    <form action="/rus/#wpcf7-f199-o6" method="post" class="wpcf7-form" novalidate="novalidate">
+                        <div style="display: none;">
+                            <input type="hidden" name="_wpcf7" value="199" />
+                            <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                            <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f199-o6" />
+                            <input type="hidden" name="_wpnonce" value="4d99304ffe" />
+                        </div>
+                        <p class="congritulations">Поздравляем!</p>
+                        <p>Имя<br />
+                            <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" /></span> </p>
+                        <p>Ваш e-mail<br />
+                            <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" /></span> </p>
+                        <p>Расскажите нам о своих наблюдениях<br />
+                            <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"></textarea></span> </p>
+                        <p><input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                        <div class="wpcf7-response-output wpcf7-display-none"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно 2 -->
+<div class="modal">
+    <input class="modal-open" id="modal-2" type="checkbox" hidden>
+    <div class="modal-wrap" aria-hidden="true" role="dialog">
+        <label class="modal-overlay" for="modal-2"></label><div class="modal-dialog"><div class="modal-header">
+                <h5>Мы расскажем Вам!</h5><label class="btn-close" for="modal-2" aria-hidden="true">×</label></div><div class="modal-body">
+                <div role="form" class="wpcf7" id="wpcf7-f200-o7" lang="ru-RU" dir="ltr">
+                    <div class="screen-reader-response"></div>
+                    <form action="/rus/#wpcf7-f200-o7" method="post" class="wpcf7-form" novalidate="novalidate">
+                        <div style="display: none;">
+                            <input type="hidden" name="_wpcf7" value="200" />
+                            <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                            <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f200-o7" />
+                            <input type="hidden" name="_wpnonce" value="26eca20a1f" />
+                        </div>
+                        <p>Ваше имя<br />
+                            <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" /></span> </p>
+                        <p>Ваш e-mail<br />
+                            <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" /></span> </p>
+                        <p class="congritulations">Мы отправим Вам<br>детальную информацию на e-mail!</p>
+                        <p><input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                        <div class="wpcf7-response-output wpcf7-display-none"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно 3 -->
+<div class="modal">
+    <input class="modal-open" id="modal-3" type="checkbox" hidden>
+    <div class="modal-wrap" aria-hidden="true" role="dialog">
+        <label class="modal-overlay" for="modal-3"></label><div class="modal-dialog"><div class="modal-header">
+                <h5>Записаться на бесплатное занятие!</h5><label class="btn-close" for="modal-3" aria-hidden="true">×</label></div><div class="modal-body">
+                <div role="form" class="wpcf7" id="wpcf7-f209-o8" lang="ru-RU" dir="ltr">
+                    <div class="screen-reader-response"></div>
+                    <form action="/rus/#wpcf7-f209-o8" method="post" class="wpcf7-form" novalidate="novalidate">
+                        <div style="display: none;">
+                            <input type="hidden" name="_wpcf7" value="209" />
+                            <input type="hidden" name="_wpcf7_version" value="4.3.1" />
+                            <input type="hidden" name="_wpcf7_locale" value="ru_RU" />
+                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f209-o8" />
+                            <input type="hidden" name="_wpnonce" value="302e7148f8" />
+                        </div>
+                        <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Имя" /></span></p>
+                        <p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" /></span></p>
+                        <p><span class="wpcf7-form-control-wrap text-719"><input type="text" name="text-719" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Телефон" /></span></p>
+                        <p><input type="submit" value="Отправить" class="wpcf7-form-control wpcf7-submit" /></p>
+                        <div class="wpcf7-response-output wpcf7-display-none"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

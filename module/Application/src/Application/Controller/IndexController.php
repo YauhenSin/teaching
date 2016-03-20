@@ -9,6 +9,7 @@ class IndexController extends CoreController
 {
     public function indexAction()
     {
+        $this->layout('layout/main');
         return new ViewModel();
     }
 }

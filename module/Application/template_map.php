@@ -5,6 +5,7 @@ return array(
     'application/auth/register' => __DIR__ . '/view/application/auth/register.phtml',
     'application/index/index'   => __DIR__ . '/view/application/index/index.phtml',
     'layout/layout'             => __DIR__ . '/view/layout/layout.phtml',
+    'layout/main'               => __DIR__ . '/view/layout/main.phtml',
     'error/index'               => __DIR__ . '/view/error/index.phtml',
     'error/404'                 => __DIR__ . '/view/error/404.phtml',
 );
