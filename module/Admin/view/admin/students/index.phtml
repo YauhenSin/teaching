@@ -2,8 +2,9 @@
 /** @var \Core\Entity\User [] $students*/
 $students = $this->students;
 ?>
-<table class="table table-striped">
-    <thead>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>#</th>
             <th><?php echo $this->translate('First name'); ?></th>
@@ -15,8 +16,8 @@ $students = $this->students;
             <th><?php echo $this->translate('Education price'); ?></th>
             <th><?php echo $this->translate('Actions'); ?></th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <?php foreach ($students as $key => $student) : ?>
             <tr>
                 <td scope="row"><?php echo $key + 1 ; ?></td>
@@ -33,5 +34,7 @@ $students = $this->students;
                 </td>
             </tr>
         <?php endforeach; ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
