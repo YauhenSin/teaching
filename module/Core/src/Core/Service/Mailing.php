@@ -26,6 +26,7 @@ class Mailing implements ListenerAggregateInterface
     {
         $sharedEvents = $events->getSharedManager();
         $this->listeners[] = $sharedEvents->attach('Admin\Controller\GroupsController', self::HOMEWORK, [$this, 'homework'], 100);
+        $this->listeners[] = $sharedEvents->attach('Teacher\Controller\GroupsController', self::HOMEWORK, [$this, 'homework'], 100);
     }
 
     public function detach(EventManagerInterface $events)

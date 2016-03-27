@@ -151,8 +151,7 @@ class TeachersController extends CoreController
             }
             return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
         }
-        return new ViewModel([
-        ]);
+        return $this->redirect()->toRoute('admin_teachers_index', ['action' => 'index']);
     }
 
     /**

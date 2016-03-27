@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controller;
+namespace Teacher\Controller;
 
 use Core\Controller\CoreController;
 use Core\Entity\User;
@@ -13,7 +13,7 @@ class StudentsController extends CoreController
 {
     public function indexAction()
     {
-        $students = $this->getRepository('User')->findByRoleAndOwner($this->getStudentRole(), $this->getUser());
+        $students = $this->getRepository('User')->findStudentsByTeacher($this->getUser());
         return new ViewModel([
             'students' => $students,
         ]);
@@ -30,7 +30,7 @@ class StudentsController extends CoreController
                 'name' => 'findBy',
                 'params' => [
                     'criteria' => [
-                        'owner' => $this->getUser(),
+                        'teacher' => $this->getUser(),
                     ],
                 ],
             ]
@@ -53,12 +53,12 @@ class StudentsController extends CoreController
                     ->addRole($this->getStudentRole())
                     ->setPassword($this->encryptPassword($form->get('password')->getValue()))
                     ->setState(1)
-                    ->setOwner($this->getUser())
+                    ->setOwner($this->getUser()->getOwner())
                 ;
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();
                 $this->addFlashMessages(['Student has been created']);
-                return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+                return $this->redirect()->toRoute('teacher_students_index', ['action' => 'index']);
             }
         }
         return new ViewModel([
@@ -69,12 +69,9 @@ class StudentsController extends CoreController
     public function editAction()
     {
         /** @var \Core\Entity\User $user */
-        $user = $this->getRepository('User')->findOneBy([
-            'id' => $this->params()->fromRoute('id'),
-            'owner' => $this->getUser(),
-        ]);
+        $user = $this->getRepository('User')->findStudentByTeacherAndId($this->getUser(), $this->params()->fromRoute('id'));
         if (!$user) {
-            return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+            return $this->redirect()->toRoute('teacher_students_index', ['action' => 'index']);
         }
         $request = $this->getRequest();
         $form = $this->createForm($user);
@@ -84,7 +81,7 @@ class StudentsController extends CoreController
                 'name' => 'findBy',
                 'params' => [
                     'criteria' => [
-                        'owner' => $this->getUser(),
+                        'teacher' => $this->getUser(),
                     ],
                 ],
             ]
@@ -114,7 +111,7 @@ class StudentsController extends CoreController
                 $this->getEm()->persist($user);
                 $this->getEm()->flush();
                 $this->addFlashMessages(['Student has been saved']);
-                return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+                return $this->redirect()->toRoute('teacher_students_index', ['action' => 'index']);
             }
         }
         return new ViewModel([
@@ -125,8 +122,8 @@ class StudentsController extends CoreController
     public function deleteAction()
     {
         /** @var \Core\Entity\User $user */
-        $user = $this->getEntity('User', $this->params()->fromRoute('id'));
-        if ($user && $user->getOwner() == $this->getUser()) {
+        $user = $this->getRepository('User')->findStudentByTeacherAndId($this->getUser(), $this->params()->fromRoute('id'));
+        if ($user) {
             try {
                 $this->getEm()->remove($user);
                 $this->getEm()->flush();
@@ -134,9 +131,9 @@ class StudentsController extends CoreController
             } catch(\Exception $exception) {
                 $this->addFlashMessages(['Something wrong. Try again.'], 'error');
             }
-            return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+            return $this->redirect()->toRoute('teacher_students_index', ['action' => 'index']);
         }
-        return $this->redirect()->toRoute('admin_students_index', ['action' => 'index']);
+        return $this->redirect()->toRoute('teacher_students_index', ['action' => 'index']);
     }
 
     /**

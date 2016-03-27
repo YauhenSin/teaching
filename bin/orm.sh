@@ -21,6 +21,7 @@ case "$1" in
         cd module/Core && $templatemapGeneratorPath && cd $folderUp2
         cd module/Superadmin && $templatemapGeneratorPath && cd $folderUp2
         cd module/Admin && $templatemapGeneratorPath && cd $folderUp2
+        cd module/Teacher && $templatemapGeneratorPath && cd $folderUp2
         cd module/Student && $templatemapGeneratorPath && cd $folderUp2
         ;;
     *)

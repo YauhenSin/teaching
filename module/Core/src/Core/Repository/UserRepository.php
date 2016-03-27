@@ -28,4 +28,49 @@ class UserRepository extends EntityRepository
         $result = $queryBuilder->getQuery()->getResult();
         return $result;
     }
+
+    /**
+     * @param \Core\Entity\User $teacher
+     * @return array
+     */
+    public function findStudentsByTeacher($teacher)
+    {
+        $queryBuilder = new QueryBuilder($this->getEntityManager());
+        $queryBuilder
+            ->select('u')
+            ->from('\Core\Entity\User', 'u')
+            ->innerJoin('\Core\Entity\Group', 'g', 'WITH', $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->eq('u.group', 'g'),
+                $queryBuilder->setParameter('teacher', $teacher)->expr()->eq('g.teacher', ':teacher')
+            ))
+        ;
+        $result = $queryBuilder->getQuery()->getResult();
+        return $result;
+    }
+
+    /**
+     * @param \Core\Entity\User $teacher
+     * @param int $studentId
+     * @return \Core\Entity\User | null
+     */
+    public function findStudentByTeacherAndId($teacher, $studentId)
+    {
+        $queryBuilder = new QueryBuilder($this->getEntityManager());
+        $queryBuilder
+            ->select('u')
+            ->from('\Core\Entity\User', 'u')
+            ->innerJoin('\Core\Entity\Group', 'g', 'WITH', $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->eq('u.group', 'g'),
+                $queryBuilder->setParameter('teacher', $teacher)->expr()->eq('g.teacher', ':teacher')
+            ))
+            ->andWhere('u.id = :studentId')
+            ->setParameter('studentId', $studentId)
+        ;
+        try {
+            $result = $queryBuilder->getQuery()->getSingleResult();
+        } catch (\Exception $e) {
+            return null;
+        }
+        return $result;
+    }
 }

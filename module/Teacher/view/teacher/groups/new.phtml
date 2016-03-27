@@ -1,0 +1,45 @@
+<?php
+/** @var \Zend\Form\Form $form */
+$form = $this->form;
+$form->prepare();
+?>
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <?php echo $this->form()->openTag($form); ?>
+        <h2><?php echo $this->translate('Create new group'); ?></h2>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('title')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Title',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('title')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('weekday')->setAttributes([
+                'class' => 'form-control',
+                'empty_option' => 'Choose weekday',
+                'options' => [
+                    'monday' => 'Monday',
+                    'tuesday' => 'Tuesday',
+                    'wednesday' => 'Wednesday',
+                    'thursday' => 'Thursday',
+                    'friday' => 'Friday',
+                    'saturday' => 'Saturday',
+                    'sunday' => 'Sunday',
+                ],
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('weekday')); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->formElement($form->get('dateStart')->setAttributes([
+                'class' => 'form-control',
+                'placeholder' => 'Date start',
+            ])); ?>
+            <?php echo $this->formElementErrors()->render($form->get('dateStart')); ?>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default"><?php echo $this->translate('Create'); ?></button>
+        </div>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

@@ -15,6 +15,7 @@ return [
         'Core',
         'Superadmin',
         'Admin',
+        'Teacher',
         'Student',
     ],
 

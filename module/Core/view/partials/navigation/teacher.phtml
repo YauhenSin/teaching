@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="<?php echo $this->url('teacher_index_index', ['action' => 'index']); ?>" class="navbar-brand"><?php echo $this->translate('Teacher'); ?></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $this->translate('Groups'); ?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $this->url('teacher_groups_index', ['action' => 'index']); ?>"><?php echo $this->translate('List'); ?></a></li>
+                        <li class="divider" role="separator"></li>
+                        <li><a href="<?php echo $this->url('teacher_groups_index', ['action' => 'new']); ?>"><?php echo $this->translate('New'); ?></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $this->translate('Students'); ?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $this->url('teacher_students_index', ['action' => 'index']); ?>"><?php echo $this->translate('List'); ?></a></li>
+                        <li class="divider" role="separator"></li>
+                        <li><a href="<?php echo $this->url('teacher_students_index', ['action' => 'new']); ?>"><?php echo $this->translate('New'); ?></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><?php echo $this->translate('Logout'); ?></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -40,6 +40,10 @@ return [
                 ['route' => 'admin_groups_index', 'roles' => ['admin']],
                 ['route' => 'admin_students_index', 'roles' => ['admin']],
 
+                ['route' => 'teacher_index_index', 'roles' => ['teacher']],
+                ['route' => 'teacher_groups_index', 'roles' => ['teacher']],
+                ['route' => 'teacher_students_index', 'roles' => ['teacher']],
+
                 ['route' => 'student_index_index', 'roles' => ['student']],
             ],
         ],
