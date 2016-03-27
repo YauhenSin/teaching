@@ -18,7 +18,7 @@ $groups = $this->groups;
         <?php foreach ($groups as $key => $group) : ?>
             <tr>
                 <td scope="row"><?php echo $key + 1 ; ?></td>
-                <td><?php echo $group->getTitle(); ?></td>
+                <td><a href="<?php echo $this->url('admin_groups_index', ['action' => 'view', 'id' => $group->getId()]); ?>"><?php echo $group->getTitle(); ?></a></td>
                 <td><?php echo $group->getWeekday(); ?></td>
                 <td><?php echo $group->getTeacher()->getService()->getFirstLastName(); ?></td>
                 <td><?php echo $group->getStudents()->count(); ?></td>

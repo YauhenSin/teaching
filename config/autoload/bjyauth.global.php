@@ -29,14 +29,18 @@ return [
                 ['route' => 'zfcuser/resetpassword', 'roles' => ['guest']],
 
                 ['route' => 'home', 'roles' => ['guest', 'student', 'teacher', 'admin', 'superadmin']],
+                ['route' => 'request', 'roles' => ['guest', 'student', 'teacher', 'admin', 'superadmin']],
 
                 ['route' => 'superadmin_index_index', 'roles' => ['superadmin']],
                 ['route' => 'superadmin_admins_index', 'roles' => ['superadmin']],
+                ['route' => 'superadmin_requests_index', 'roles' => ['superadmin']],
 
                 ['route' => 'admin_index_index', 'roles' => ['admin']],
                 ['route' => 'admin_teachers_index', 'roles' => ['admin']],
                 ['route' => 'admin_groups_index', 'roles' => ['admin']],
                 ['route' => 'admin_students_index', 'roles' => ['admin']],
+
+                ['route' => 'student_index_index', 'roles' => ['student']],
             ],
         ],
     ],

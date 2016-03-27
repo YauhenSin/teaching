@@ -1,0 +1,30 @@
+<?php
+/** @var \Core\Entity\Request [] $requests */
+$requests = $this->requests;
+?>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th><?php echo $this->translate('Name'); ?></th>
+            <th><?php echo $this->translate('Email'); ?></th>
+            <th><?php echo $this->translate('Phone'); ?></th>
+            <th><?php echo $this->translate('Actions'); ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($requests as $key => $request) : ?>
+            <tr>
+                <td scope="row"><?php echo $key + 1 ; ?></td>
+                <td><?php echo $request->getName(); ?></td>
+                <td><?php echo $request->getEmail(); ?></td>
+                <td><?php echo $request->getPhone(); ?></td>
+                <td>
+                    <a href="<?php echo $this->url('superadmin_requests_index', ['action' => 'delete', 'id' => $request->getId()]); ?>" class="btn btn-danger btn-xs"><?php echo $this->translate('Delete'); ?></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

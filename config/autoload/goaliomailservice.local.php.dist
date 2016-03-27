@@ -1,0 +1,32 @@
+<?php
+/**
+ * GoalioMailService Configuration
+ *
+ * If you have a ./config/autoload/ directory set up for your project, you can
+ * drop this config file in it and change the values as you wish.
+ */
+return [
+    'goaliomailservice' => [
+
+    /**
+     * Transport Class
+     *
+     * Name of Zend Transport Class to use
+     */
+    'type' => 'smtp',
+
+    'options' => [
+        'host'              => 'smtp.gmail.com',
+        'connection_class'  => 'login',
+        'connection_config' => [
+            'username' => '',
+            'password' => '',
+            'ssl' => 'tls'
+        ],
+    ],
+
+    /**
+     * End of GoalioMailService configuration
+     */
+    ]
+];

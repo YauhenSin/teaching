@@ -20,6 +20,16 @@ return [
                     ],
                 ],
             ],
+            'request' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route'    => '/request',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\IndexController',
+                        'action'     => 'request',
+                    ],
+                ],
+            ],
             'zfcuser/register' => [
                 'type' => 'Literal',
                 'options' => [

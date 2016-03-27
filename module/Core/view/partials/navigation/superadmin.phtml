@@ -22,6 +22,15 @@
                         <li><a href="<?php echo $this->url('superadmin_admins_index', ['action' => 'new']); ?>"><?php echo $this->translate('New'); ?></a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $this->translate('Requests'); ?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $this->url('superadmin_requests_index', ['action' => 'index']); ?>"><?php echo $this->translate('List'); ?></a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><?php echo $this->translate('Logout'); ?></a></li>

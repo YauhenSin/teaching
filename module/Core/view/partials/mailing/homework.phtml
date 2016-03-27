@@ -1,0 +1,10 @@
+<?php
+/** @var \Core\Entity\Homework $homework */
+$homework = $this->homework;
+?>
+<div>
+    <?php echo $this->translate('Новое домашнее задание:'); ?>
+</div>
+<div>
+    <?php echo nl2br($homework->getContent()); ?>
+</div>

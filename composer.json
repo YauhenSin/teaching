@@ -15,6 +15,7 @@
         "zf-commons/zfc-base": "0.1.*",
         "zf-commons/zfc-user": "1.2.*",
         "zf-commons/zfc-user-doctrine-orm": "1.0.*",
-        "bjyoungblood/bjy-authorize": "1.4.*"
+        "bjyoungblood/bjy-authorize": "1.4.*",
+        "goalio/goalio-mailservice": "1.*"
     }
 }

@@ -1,0 +1,18 @@
+<?php
+/** @var \Core\Entity\User $student */
+$student = $this->student;
+/** @var \Core\Entity\Homework $homework */
+$homework = $this->homework;
+?>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h3><?php echo sprintf($this->translate('Hello, %s!'), $student->getService()->getFirstLastName()); ?></h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4><?php echo $this->translate('Current homework'); ?></h4>
+        <hr>
+        <p><?php echo nl2br($homework->getContent()); ?></p>
+    </div>
+</div>

@@ -4,6 +4,7 @@ namespace Admin\Controller;
 
 use Core\Controller\CoreController;
 use Core\Entity\Group;
+use Core\Entity\Homework;
 use Core\Entity\User;
 use Zend\View\Model\ViewModel;
 
@@ -91,6 +92,26 @@ class GroupsController extends CoreController
         ]);
     }
 
+    public function viewAction()
+    {
+        /** @var \Core\Entity\Group $group */
+        $group = $this->getRepository('Group')->findOneBy([
+            'id' => $this->params()->fromRoute('id'),
+            'owner' => $this->getUser(),
+        ]);
+        if (!$group) {
+            return $this->redirect()->toRoute('admin_groups_index', ['action' => 'index']);
+        }
+        $homework = $this->getRepository('Homework')->findOneBy([
+            'group' => $group,
+            'state' => Homework::STATE_ACTIVE,
+        ]);
+        return new ViewModel([
+            'group' => $group,
+            'homework' => $homework,
+        ]);
+    }
+
     public function deleteAction()
     {
         /** @var \Core\Entity\Group $group */
@@ -106,6 +127,42 @@ class GroupsController extends CoreController
             return $this->redirect()->toRoute('admin_groups_index', ['action' => 'index']);
         }
         return new ViewModel([
+        ]);
+    }
+
+    public function addHomeworkAction()
+    {
+        /** @var \Core\Entity\Group $group */
+        $group = $this->getRepository('Group')->findOneBy([
+            'id' => $this->params()->fromRoute('id'),
+            'owner' => $this->getUser(),
+        ]);
+        if (!$group) {
+            return $this->redirect()->toRoute('admin_groups_index', ['action' => 'index']);
+        }
+        $homework = new Homework();
+        $request = $this->getRequest();
+        $form = $this->createForm($homework);
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                foreach ($group->getHomeworks() as $pastHomework) {
+                    $pastHomework->setState(Homework::STATE_PAST);
+                    $this->getEm()->persist($pastHomework);
+                }
+                $homework
+                    ->setGroup($group)
+                    ->setState(Homework::STATE_ACTIVE)
+                ;
+                $this->getEm()->persist($homework);
+                $this->getEm()->flush();
+                $this->addFlashMessages(['Homework has been added']);
+                $this->getEventManager()->trigger(\Core\Service\Mailing::HOMEWORK, $this, ['homework' => $homework]);
+                return $this->redirect()->toRoute('admin_groups_index', ['action' => 'view', 'id' => $group->getId()]);
+            }
+        }
+        return new ViewModel([
+            'form' => $form,
         ]);
     }
 

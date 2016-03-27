@@ -20,6 +20,9 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $eventManager->attach($serviceManager->get('teaching_mailing_service'));
     }
 
     public function getConfig()
@@ -43,6 +46,7 @@ class Module
 
                     return new RedirectCallback($application, $router, $options);
                 },
+                'teaching_mailing_service' => 'Core\Service\Mailing',
             ],
         ];
     }

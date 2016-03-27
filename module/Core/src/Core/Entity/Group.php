@@ -78,6 +78,13 @@ class Group
     protected $owner;
 
     /**
+     * @var Homework []
+     * @ORM\OneToMany(targetEntity="Core\Entity\Homework", mappedBy="group")
+     * @AT\Exclude
+     **/
+    protected $homeworks;
+
+    /**
      * @var DateTime
      * @ORM\Column(name="created_at", type="datetime")
      * @AT\Exclude
@@ -104,6 +111,7 @@ class Group
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
         $this->students = new ArrayCollection();
+        $this->homeworks = new ArrayCollection();
     }
 
     /**
@@ -273,7 +281,7 @@ class Group
     /**
      * Get students
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Core\Entity\User []
      */
     public function getStudents()
     {
@@ -323,7 +331,7 @@ class Group
      *
      * @return Group
      */
-    public function setOwner(\Core\Entity\User $owner = null)
+    public function setOwner($owner)
     {
         $this->owner = $owner;
 
@@ -338,5 +346,39 @@ class Group
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Add homework
+     *
+     * @param \Core\Entity\Homework $homework
+     *
+     * @return Group
+     */
+    public function addHomework($homework)
+    {
+        $this->homeworks[] = $homework;
+
+        return $this;
+    }
+
+    /**
+     * Remove homework
+     *
+     * @param \Core\Entity\Homework $homework
+     */
+    public function removeHomework($homework)
+    {
+        $this->homeworks->removeElement($homework);
+    }
+
+    /**
+     * Get homeworks
+     *
+     * @return \Core\Entity\Homework []
+     */
+    public function getHomeworks()
+    {
+        return $this->homeworks;
     }
 }

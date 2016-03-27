@@ -9,11 +9,13 @@ return [
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
+        'GoalioMailService',
 
         'Application',
         'Core',
         'Superadmin',
         'Admin',
+        'Student',
     ],
 
     // These are various options for the listeners attached to the ModuleManager
